@@ -1,0 +1,15 @@
+C:\Users\jbao8\source\repos\Net6App\Net6App\bin\Debug\net6.0\Net6App.exe
+C:\Users\jbao8\source\repos\Net6App\Net6App\bin\Debug\net6.0\Net6App.deps.json
+C:\Users\jbao8\source\repos\Net6App\Net6App\bin\Debug\net6.0\Net6App.runtimeconfig.json
+C:\Users\jbao8\source\repos\Net6App\Net6App\bin\Debug\net6.0\Net6App.dll
+C:\Users\jbao8\source\repos\Net6App\Net6App\bin\Debug\net6.0\Net6App.pdb
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.csproj.AssemblyReference.cache
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.AssemblyInfoInputs.cache
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.AssemblyInfo.cs
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.csproj.CoreCompileInputs.cache
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.dll
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\refint\Net6App.dll
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.pdb
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\Net6App.genruntimeconfig.cache
+C:\Users\jbao8\source\repos\Net6App\Net6App\obj\Debug\net6.0\ref\Net6App.dll

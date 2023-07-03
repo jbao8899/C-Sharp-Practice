@@ -1,0 +1,1977 @@
+﻿using Microsoft.VisualBasic;
+using System; // Use the System namespace. It contains many classes (for instance, Console)
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml.Linq;
+
+namespace HelloWorld // HelloWorld namespace is created here
+{
+    // Program is a class within the HelloWorld namespace.
+    // Internal means it cannot be used outside this project???
+    internal class Program 
+    {
+        static int age; // Default values is 0
+
+        // fields stored as constants
+        const double PI = 3.14159265359;
+        const int weeks = 52, months = 12;
+        const string birthday = "February 3, 2000";
+
+        public static int add(int num1, int num2)
+        {
+            int result = num1 + num2;
+            return result;
+        }
+
+        public static int multiply(int num1, int num2)
+        {
+            return num1 * num2;
+        }
+        public static double divide(double num1, double num2)
+        {
+            return num1 / num2;
+        }
+
+        public static void WriteSomething()
+        {
+            Console.WriteLine("I am called from a method");
+            //Console.Read();
+        }
+
+        public static void WriteSomethingSpecific(string toWrite)
+        {
+            Console.WriteLine(toWrite);
+        }
+
+        public static void GreetFriend(string nameOfFriend)
+        {
+            Console.WriteLine($"Hi {nameOfFriend}, my friend!");
+        }
+
+        public static int AddUserProvidedInts()
+        {
+            Console.WriteLine("Please enter the first number.");
+            int num1 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please enter the second number.");
+            int num2 = int.Parse(Console.ReadLine());
+
+            return num1 + num2;
+        }
+
+
+        static string username;
+        static string password;
+
+        public static void Register()
+        {
+            Console.WriteLine("Please enter a username for your account");
+            username = Console.ReadLine();
+            Console.WriteLine("Please enter a password for your account");
+            password = Console.ReadLine();
+            Console.WriteLine("Registration Completed.");
+            Console.WriteLine("-----------------------");
+        }
+
+        public static void Login()
+        {
+            Console.WriteLine("Please enter your username");
+            if (!Console.ReadLine().Equals(username))
+            {
+                Console.WriteLine("Wrong username");
+            }
+            else
+            {
+                Console.WriteLine("Please enter your password");
+                if (!Console.ReadLine().Equals(password))
+                {
+                    Console.WriteLine("Wrong password");
+                }
+                else
+                {
+                    Console.WriteLine("You have logged in!");
+                }
+            }
+        }
+
+        static int highscore = 0;
+        static string highscorePlayer = "";
+
+        public static void SubmitGameResults(int new_score, string player)
+        {
+            if (new_score > highscore)
+            {
+                highscore = new_score;
+                highscorePlayer = player;
+                Console.WriteLine("New highscore is {0}", highscore);
+                Console.WriteLine("New highscore holder is {0}", highscorePlayer);
+            }
+            else
+            {
+                Console.WriteLine("The old highscore of " + highscore +
+                    " could not be broken and is still held by " + highscorePlayer);
+            }
+        }
+
+        static int[,] matrix =
+        {
+            { 1, 2, 3 },
+            { 4, 5, 6 },
+            { 7, 8, 9 }
+        };
+
+        static double GetAverage(int[] grades)
+        {
+            int sum = 0;
+            for (int i = 0; i < grades.Length; i++)
+            {
+                sum += grades[i];
+            }
+            return (double)sum / (double)grades.Length;
+        }
+
+        static void IncrementAllValuesBy2(int[] values)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] += 2;
+            }
+        }
+
+        // Can pass numerous strings as part of the sentence
+        public static void ParamsMethod(params object[] stuff)
+        {
+            for (int i = 0; i < stuff.Length; i++)
+            {
+                Console.Write(stuff[i] + " ");
+            }
+            Console.WriteLine();
+        }
+
+        // must put in at least one integer
+        public static int MinManyNumbers(params int[] numbers)
+        {
+            int min = int.MaxValue;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] < min)
+                {
+                    min = numbers[i];
+                }
+            }
+            return min;
+        }
+
+        public static Order[] ReceiveOrdersFromBranch1()
+        {
+            Order[] orders = new Order[]
+            {
+                new Order(1, 5),
+                new Order(2, 4),
+                new Order(6, 10)
+            };
+            return orders;
+        }
+
+        public static Order[] ReceiveOrdersFromBranch2()
+        {
+            Order[] orders = new Order[]
+            {
+                new Order(3, 5),
+                new Order(4, 4),
+                new Order(5, 10)
+            };
+            return orders;
+        }
+
+        public static List<string> GetPartyFriends(List<string> list, int count)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException("The list is null");
+            }
+            if (0 > count || count > list.Count)
+            {
+                throw new ArgumentOutOfRangeException("Number of friends to return must be less than or equal to the number of friends.");
+            }
+
+            var buffer = new List<string>(list); // Removing from buffer won't change list that was passed in
+            var partyFriends = new List<string>();
+
+            while (partyFriends.Count < count)
+            {
+                var currentFriend = GetPartyFriend(buffer);
+                partyFriends.Add(currentFriend);
+                buffer.Remove(currentFriend); // This line is not good
+            }
+
+            return partyFriends;
+        }
+
+        public static string GetPartyFriend(List<string> list)
+        {
+            string shortestName = list[0];
+            for (var i = 0; i < list.Count; i++)
+            {
+                if (list[i].Length > shortestName.Length) // we should be using "<". ">" finds the longest names.
+                {
+                    shortestName = list[i];
+                }
+            }
+            return shortestName;
+
+        }
+
+        static IEnumerable<int> GetCollection(int option)
+        {
+            if (option == 1)
+            {
+                List<int> numList = new List<int> { 1, 2, 3, 4, 5 };
+
+                return numList;
+            }
+            else if (option == 2)
+            {
+                Queue<int> numQueue = new Queue<int>();
+                numQueue.Enqueue(10);
+                numQueue.Enqueue(20);
+                numQueue.Enqueue(30);
+                numQueue.Enqueue(40);
+                numQueue.Enqueue(50);
+
+                return numQueue;
+            }
+            else
+            {
+                return new int[] { 100, 200, 300, 400, 500 };
+            }
+        }
+
+        static void CollectionSum(IEnumerable<int> collection)
+        {
+            int sum = 0;
+            foreach (var item in collection)
+            {
+                sum += item;
+            }
+            Console.WriteLine("The sum is {0}", sum);
+        }
+
+        static void GetOddNumbers(int[] numbers)
+        {
+            Console.WriteLine("Odd numbers:");
+
+            IEnumerable<int> oddNumbers = from number in numbers
+                                          where number % 2 != 0
+                                          select number;
+
+            foreach (int number in oddNumbers)
+            {
+                Console.Write(number + " ");
+            }
+            Console.WriteLine();
+        }
+
+        // Main() is the entry point of all C# programs
+        // static means Main() does not need an instance of the class to run
+        // void means nothing is returned
+        // an array of strings is taken as input
+        static void Main(string[] args) 
+        {
+
+            // Early stuff
+            // Console is a class within the System namespace
+            //Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello Jeremy!");
+
+            //Console.Beep();
+            //Console.WriteLine("Enter a line.");
+            //Console.ReadLine();
+            //Console.Beep();
+
+            //int iAmANumber = 5;
+            //Console.WriteLine(iAmANumber);
+
+            //float pi = 3.1415f;
+            //Console.WriteLine(pi);
+
+            //bool isGPUSEnabled = true;
+            //Console.WriteLine(isGPUSEnabled);
+
+            //string myName = "Jeremy";
+            //Console.WriteLine(myName);
+
+            //char at = '@';
+            //Console.WriteLine(at);
+
+            //Console.WriteLine(age);
+            //age = 20;
+            //Console.WriteLine(age);
+
+            //sbyte sbyte_x = 120; // can take a value from -128 to 127
+            //Console.WriteLine(sbyte_x);
+
+            //short short_x = 3000; // can take a value from -32767 to 32767
+            //Console.WriteLine(short_x);
+
+            //int int_x = 2000000000; // can take a value from -2,147,483,648 to 2,147,483,647
+            //Console.WriteLine(int_x);
+
+            //long long_x = 9000000000000000000; // Can take a value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+            //Console.WriteLine(long_x);
+
+            //// Use shortest whole number type that can hold your value
+
+            //float float_x = 0.5f; // range from 1.5 × 10 ^−45 - 3.4 × 10 ^ 38, 7 - digit precision
+            //Console.WriteLine(float_x);
+
+            //double double_x = 0.5; // range from 5.0 × 10 ^−324 - 1.7 × 10 ^ 308, 15 - digit precision
+            //Console.WriteLine(double_x);
+
+            //decimal decimal_x = 0.5m; //range from –7.9 × 10 ^−28 - 7.9 × 10 ^ 28, 28 - digit precision
+            //Console.WriteLine(decimal_x);
+
+            //// Use float for 3D graphics (and video game physics),
+            //// double for everything(except money calculations) and decimal for
+            //// financial applications.
+
+            //bool my_bool = false;
+            //Console.WriteLine(my_bool);
+
+            //char singleLetter = 'A';
+            //Console.WriteLine(singleLetter);
+
+            //string username = "jbao8899";
+            //Console.WriteLine(username);
+
+            //int num1;
+            //num1 = 13;
+
+            //Console.WriteLine(num1);
+
+            //int num2 = 23;
+
+            //int sum = num1 + num2;
+            //Console.WriteLine(sum);
+
+            //num2 = 100;
+
+            //// Concatenate strings
+            //Console.WriteLine("num1 is " + num1);
+            //Console.WriteLine("num1 (" + num1 + ") + num2 (" + num2 + ") = " + sum);
+
+            //int num3, num4, num5;
+
+            //double d1 = 3.1415;
+            //double d2 = 5.1;
+            //double dDiv = d1 / d2;
+            //Console.WriteLine("d1 (" + d1 + ") / d2 (" + d2 + ") = " + dDiv);
+
+            //float f1 = 3.1415f;
+            //float f2 = 5.1f;
+            //float fDiv = f1 / f2;
+            //Console.WriteLine("f1 (" + f1 + ") / f2 (" + f2 + ") = " + fDiv); // Lower precision
+
+            //double dIDiv = d1 / num1;
+            //Console.WriteLine("d1 (" + d1 + ") / num1 (" + num1 + ") = " + dIDiv); // Lower precision
+
+            //string myname = "Jeremy";
+            //Console.WriteLine(myname);
+
+            //string message = "My name is " + myname;
+
+            //Console.WriteLine(message);
+
+            //string capsMessage = message.ToUpper();
+
+            //Console.WriteLine(capsMessage);
+
+            //string lowercaseMessage = message.ToLower();
+            //Console.WriteLine(lowercaseMessage);
+
+            //Console.Write("No new line after this sentence.");
+            //Console.WriteLine(" There will be a line after this sentence.");
+
+            ////int input = Console.Read();
+            ////Console.WriteLine("The input was parsed to the integer value of " + input);
+
+            ////Above being there prevents this from working?
+            //Console.WriteLine("Enter a line and press enter.");
+            //string line = Console.ReadLine();
+            //Console.WriteLine("You entered the line: {0}", line);
+
+            //Console.WriteLine("Enter a line and press enter.");
+            //int asciiValue = Console.Read();
+            //Console.WriteLine("Its ASCII value is {0}", asciiValue);
+
+            //double myDouble = 13.37;
+            //int myInt;
+
+            //// Cast myDouble into integer explicitly
+            //myInt = (int)myDouble;
+            //Console.WriteLine(myInt);
+
+            //// Can implicitly cast smaller type into larger one
+            //int num = 12390532;
+            //long bigNum = num;
+            //Console.WriteLine(bigNum);
+
+            //float myFloat = 13.37f;
+            //double myNewDouble = myFloat;
+            //Console.WriteLine(myNewDouble);
+
+            //// Type conversion
+            //string myString = myDouble.ToString();
+            //Console.WriteLine(myString);
+
+            //string myFloatString = myFloat.ToString();
+            //Console.WriteLine(myFloatString);
+
+            //bool sunIsShining = true;
+            //string myBoolString = sunIsShining.ToString();
+            //Console.WriteLine(myBoolString);
+
+            //string myString = "15";
+            //string mySecondString = "13";
+
+            //int num1 = int.Parse(myString);
+            //int num2 = int.Parse(mySecondString);
+
+            //int resultInt = num1 + num2;
+            //Console.WriteLine(resultInt);
+
+            //int age = 31;
+            //string name = "Alfonso";
+            //string job = "Developer";
+
+            //Console.WriteLine("String concatenation:");
+            //Console.WriteLine("Hello. My name is " + name + ". I am " + age + " years old.");
+
+            //Console.WriteLine("String formatting:");
+            //Console.WriteLine("Hello. My name is {0}. I am {1} years old. I am a {2}.", name, age, job);
+
+            //Console.WriteLine("String interpolation:"); // more descriptive
+            //Console.WriteLine($"Hello. My name is {name}. I am {age} years old. I am a {job}.");
+
+            //Console.WriteLine("Verbatim String:"); // Good for file paths
+            //Console.WriteLine(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\bin\Debug\net5.0");
+
+            //Console.WriteLine(@"ABC\nDEF");
+            //Console.WriteLine("ABC\nDEF");
+
+            //string test = "The quick brown fox jumps over the lazy dog.";
+            //Console.WriteLine(test.Substring(4));
+            //Console.WriteLine(test.ToLower());
+            //Console.WriteLine(test.ToUpper());
+            //Console.WriteLine(test.IndexOf("x")); //should be 18
+            //Console.WriteLine(test.IndexOf("the")); //should be 31
+
+            //Console.WriteLine("   abc   \n ".Trim() + ".");
+
+            //Console.WriteLine(string.IsNullOrEmpty("   \n  "));
+            //Console.WriteLine(string.IsNullOrEmpty("     "));
+            //Console.WriteLine(string.IsNullOrEmpty(""));
+            //Console.WriteLine(string.IsNullOrEmpty(null));
+            //Console.WriteLine(string.IsNullOrEmpty("the"));
+
+            //Console.WriteLine(string.Concat("The ", "quick ", "brown ", "fox ..."));
+
+            //string format_result = string.Format("The quick brown {0} jumped over the lazy {1}", "fox", "dog");
+            //Console.WriteLine(format_result);
+
+            //string myName;
+            //Console.WriteLine("Please enter your name and press enter");
+            //myName = Console.ReadLine();
+            //Console.WriteLine($"Uppercase: {myName.ToUpper()}");
+            //Console.WriteLine($"Lowercase: {myName.ToLower()}");
+            //Console.WriteLine("Trimmed: {0}", myName.Trim());
+            //Console.WriteLine("Substring: {0}", myName.Substring(0, 5));
+
+            //Console.WriteLine("Enter a string here:");
+            //string document = Console.ReadLine();
+
+            //Console.WriteLine("Enter the character to search for:");
+            //char c = (Console.ReadLine())[0];
+
+            //Console.WriteLine($"{c} first appears at index {document.IndexOf(c)} in {document}");
+
+            //Console.WriteLine("Enter your first name:");
+            //string firstName = Console.ReadLine();
+
+            //Console.WriteLine("Enter your last name:");
+            //string lastName = Console.ReadLine();
+
+            //string fullName = string.Concat(firstName, " ", lastName);
+
+            //Console.WriteLine("Your full name is {0}", fullName);
+
+            //byte myByte = 255;
+            //Console.WriteLine("myByte: {0}", myByte);
+
+            //sbyte mySbyte = -128;
+            //Console.WriteLine("mySbyte: " + mySbyte);
+
+            //int myInt = -2147483648;
+            //Console.WriteLine($"myInt: {myInt}");
+
+            //uint myUint = 4294967295;
+            //Console.WriteLine("myUint: {0}", myUint);
+
+            //short myShort = -32768;
+            //Console.WriteLine("myShort: " + myShort);
+
+            //ushort myUshort = 65535;
+            //Console.WriteLine($"myUshort {myUshort}");
+
+            //long myLong = -9223372036854775808;
+            //Console.WriteLine("myLong: {0}", myLong);
+
+            //ulong myUlong = 18446744073709551615;
+            //Console.WriteLine("myUlong: " + myUlong);
+
+            //float myFloat = 0.5f;
+            //Console.WriteLine($"myFloat: {myFloat}");
+
+            //double myDouble = 0.75;
+            //Console.WriteLine("myDouble: {0}", myDouble);
+
+            //char myChar = 'b';
+            //Console.WriteLine("myChar: " + myChar);
+
+            //bool myBool = true;
+            //Console.WriteLine($"myBool: {myBool}");
+
+            //string myString = "abcde";
+            //Console.WriteLine("myString: {0}", myString);
+
+            //string s1 = "I control text";
+            //Console.WriteLine("s1: {0}", s1);
+            //string s2 = "12345";
+            //Console.WriteLine($"s2: {s2}");
+            //Console.WriteLine($"int.Parse(s2) + mynum: {(int.Parse(s2) + myInt)}");
+
+            //Console.WriteLine(weeks * 7);
+            //Console.WriteLine("My birthday is always going to be {0}.", birthday);
+
+            //Console.WriteLine("Enter 2 integers, separated by a space.");
+            //string two_integers = Console.ReadLine();
+            //string[] int_strings = two_integers.Split(' ');
+            //Console.WriteLine(add(int.Parse(int_strings[0]), int.Parse(int_strings[1])));
+
+            //WriteSomething();
+            //WriteSomething();
+
+            //WriteSomethingSpecific("I don't like Mondays.");
+
+            //Console.WriteLine(add(31, 15));
+
+            //Console.WriteLine(add(add(1, 2), add(3, 4)));
+
+            //Console.WriteLine(multiply(5, 4));
+
+            //Console.WriteLine(divide(25.0, 13.0)); //
+
+            //string friend1 = "John";
+            //string friend2 = "Sam";
+            //string friend3 = "Nancy";
+
+            //GreetFriend(friend1);
+            //GreetFriend(friend2);
+            //GreetFriend(friend3);
+
+            //string input = Console.ReadLine();
+            //Console.WriteLine(input);
+
+            //Console.WriteLine(AddUserProvidedInts());
+
+            //Console.WriteLine("Please enter a number");
+            //string userInput = Console.ReadLine();
+
+            //try
+            //{
+            //    int userInputAsInt = int.Parse(userInput);
+            //}
+            //catch (FormatException) { // Dealing with different types of exceptions
+            //    Console.WriteLine("Format exception, please enter an integer next time.");
+            //}
+            //catch (OverflowException)
+            //{
+            //    Console.WriteLine("The number was too positive or negative for an int");
+            //}
+            //catch (ArgumentNullException)
+            //{
+            //    Console.WriteLine("The value was empty.");
+            //}
+            //finally
+            //{
+            //    // This code will run after the try-catch, whether there was an error or not
+            //    Console.WriteLine("Finally block.");
+            //}
+
+            //try
+            //{
+            //    int num = 5;
+            //    int zero = 0;
+            //    int result = num / zero;
+            //}
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine("Divided by zero");
+            //}
+
+            // OPERATORS STUFF BELOW
+
+            //int num1 = 5;
+            //int num2 = 3;
+            //int num3;
+
+            ////Unary operator
+            //num3 = -num1;
+            //Console.WriteLine($"num3 is {num3}");
+
+            //bool isSunny = true;
+            //Console.WriteLine($"Is it not sunny? {!isSunny}");
+
+            //// Increment operators
+            //int num = 0;
+            //num++;
+            //Console.WriteLine("num is {0}", num);
+            //Console.WriteLine("num is {0}", num++);
+            //Console.WriteLine("num is {0}", num);
+            //Console.WriteLine("num is {0}", ++num);
+
+            //num--;
+            //Console.WriteLine("num is {0}", num);
+            //Console.WriteLine("num is {0}", num--);
+            //Console.WriteLine("num is {0}", num);
+            //Console.WriteLine("num is {0}", --num);
+
+            //// Binary
+            //// num1 = 5, num2 = 3
+            //int result = num1 + num2; 
+            //Console.WriteLine("num1 + num2 = {0}", result);
+            //result = num1 - num2;
+            //Console.WriteLine("num1 - num2 = {0}", result);
+            //result = num1 * num2;
+            //Console.WriteLine("num1 + num2 = {0}", result);
+            //result = num1 / num2;
+            //Console.WriteLine("num1 + num2 = {0}", result);
+            //result = num1 % num2;
+            //Console.WriteLine("num1 % num2 = {0}", result);
+
+            //bool comparisonResult;
+            //comparisonResult = num1 < num2;
+            //Console.WriteLine($"num1 < num2 = {comparisonResult}");
+            //comparisonResult = num1 <= num2;
+            //Console.WriteLine($"num1 <= num2 = {comparisonResult}");
+            //comparisonResult = num1 > num2;
+            //Console.WriteLine($"num1 > num2 = {comparisonResult}");
+            //comparisonResult = num1 >= num2;
+            //Console.WriteLine($"num1 >= num2 = {comparisonResult}");
+            //comparisonResult = num1 == num2;
+            //Console.WriteLine($"num1 == num2 = {comparisonResult}");
+            //comparisonResult = num1 != num2;
+            //Console.WriteLine($"num1 != num2 = {comparisonResult}");
+
+            //Console.WriteLine($"true  && true =  {true  && true}");
+            //Console.WriteLine($"true  && false = {true  && false}");
+            //Console.WriteLine($"false && true =  {false && true}");
+            //Console.WriteLine($"false && false = {false && false}");
+            //Console.WriteLine($"true  || true =  {true  || true}");
+            //Console.WriteLine($"true  || false = {true  || false}");
+            //Console.WriteLine($"false || true =  {false || true}");
+            //Console.WriteLine($"false || false = {false || false}");
+
+            // OPERATORS STUFF ABOVE
+
+            // IF-ELSE STUFF START
+
+            //Console.WriteLine("Enter the temperature in Celcius");
+            //int temperature;
+            //bool parsedCorrectly = int.TryParse(Console.ReadLine(), out temperature);
+
+            //if (!parsedCorrectly)
+            //{
+            //    Console.WriteLine("Please enter an integer next time.");
+            //}
+            //else if (temperature < 20)
+            //{
+            //    Console.WriteLine("Cold");
+            //}
+            //else if (temperature == 20)
+            //{
+            //    Console.WriteLine("It is 20 degrees");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("It is warm");
+            //}
+
+            //bool isRegistered = true;
+            //Console.WriteLine("Please enter your username");
+            //string username = Console.ReadLine();
+
+            //if (isRegistered)
+            //{
+
+            //    if (username.Length == 0)
+            //    {
+            //        Console.WriteLine("Hi there, registered user.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Hi there, {username}");
+            //        if (username.ToLower().Equals("admin"))
+            //        {
+            //            Console.WriteLine("You are an admin");
+            //        }
+            //    }
+            //}
+
+            //if (username.ToLower().Equals("admin") || isRegistered)
+            //{
+            //    Console.WriteLine("You are logged in");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("You are not logged in.");
+            //}
+
+            // IF-ELSE STUFF END
+
+            // CHALLENGE: IF STATEMENTS - START
+            //Register();
+
+            //Login();
+            // CHALLENGE: IF STATEMENTS - END
+
+            // SWITCH AND CASE STATEMENTS - START
+            //int age = 20;
+
+            //switch (age)
+            //{
+            //    case 15:
+            //        Console.WriteLine("Too young to party in the club!");
+            //        break;
+            //    case 25:
+            //        Console.WriteLine("Good to go!");
+            //        break;
+            //    default:
+            //        Console.WriteLine("How old are you?");
+            //        break;
+            //}
+
+            //string username = "root";
+
+            //switch (username)
+            //{
+            //    case ("Dennis"):
+            //        Console.WriteLine("Hello Dennis");
+            //        break;
+            //    case ("root"):
+            //        Console.WriteLine("Root user");
+            //        break;
+            //    default:
+            //        Console.WriteLine("Default user");
+            //        break;
+            //}
+            // SWITCH AND CASE STATEMENTS - END
+
+            // CHALLENGE: IF STATEMENTS 2 - START
+            //SubmitGameResults(5, "John");
+            //SubmitGameResults(10, "Sam");
+            //SubmitGameResults(8, "John");
+            //SubmitGameResults(12, "Sam");
+            // CHALLENGE: IF STATEMENTS 2 - END
+
+            // TERNARY OPERATOR - START
+            //int temperature = 105;
+            //string stateOfMatter;
+
+            //if (temperature < 0)
+            //{
+            //    stateOfMatter = "solid";
+            //}
+            //else if (temperature < 100)
+            //{
+            //    stateOfMatter = "liquid";
+            //}
+            //else
+            //{
+            //    stateOfMatter = "gas";
+            //}
+
+            // Same as above
+            //stateOfMatter = temperature < 0 ? "solid" : (temperature < 100 ? "liquid" : "gas");
+
+            //Console.WriteLine(stateOfMatter);
+            // TERNARY OPERATOR - END
+
+            //ENHANCED IF STATEMENTS: TERNARY OPERATOR: Challenge - START
+            //Console.WriteLine("Enter the temperature");
+            //string temperatureString = Console.ReadLine();
+
+            //int temperature;
+            //bool parsedCorrectly = int.TryParse(temperatureString, out temperature);
+
+            //string toPrint = !parsedCorrectly ? "Not a valid Temperature" : (
+            //    temperature <= 15 ? "it is too cold here" : (
+            //        (16 <= temperature && temperature <= 28) ? "it is ok" : "it is hot here"
+            //    )
+            //);
+
+            //Console.WriteLine(toPrint);
+            //ENHANCED IF STATEMENTS: TERNARY OPERATOR: Challenge - END
+
+            //LOOPS - START
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            //for (int i = 1; i < 20; i += 2)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            //int counter = 0;
+            //do
+            //{
+            //    Console.WriteLine(counter);
+            //    counter++;
+            //}
+            //while (counter < 5);
+
+            //int lengthOfText = 0;
+            //string wholeText = "";
+            //do
+            //{
+            //    Console.WriteLine("Please enter the name of a friend");
+            //    string nameOfFriend = Console.ReadLine();
+            //    wholeText += nameOfFriend;
+            //    lengthOfText += nameOfFriend.Length;
+            //}
+            //while (lengthOfText < 20);
+            //Console.WriteLine("Thanks, that was enough.");
+            //Console.WriteLine(wholeText);
+
+            //int counter = 0;
+            //while (counter < 10)
+            //{
+            //    Console.WriteLine(counter);
+            //    counter++;
+            //}
+
+            //Counts number of times enter was pressed
+            //int counter = 0;
+            //string enteredText = "";
+            //while (enteredText.Length == 0)
+            //{
+            //    Console.WriteLine("Press enter to increase count, or enter anything else to stop looping");
+            //    enteredText = Console.ReadLine();
+
+            //    counter++;
+            //    Console.WriteLine(counter);
+            //}
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //    if (i == 3)
+            //    {
+            //        Console.WriteLine("We stop at 3!");
+            //        break;
+            //    }
+            //}
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (i == 3)
+            //    {
+            //        // 3 is not printed
+            //        continue;
+            //    }
+            //    Console.WriteLine(i);
+            //}
+
+            //Print only odd numbers
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (i % 2 == 0)
+            //    {
+            //        continue;
+            //    }
+            //    Console.WriteLine(i);
+            //}
+
+            //Challenge - Loops 1 - Average
+            //int totalScore = 0;
+            //int numScoresEntered = 0;
+
+            //while (true)
+            //{//    Console.WriteLine();
+            //    Console.WriteLine("Please enter an integer score between 0 and 20, inclusive.");
+            //    Console.WriteLine("Enter -1 to stop");
+            //    string scoreString = Console.ReadLine();
+
+            //    int newScore;
+
+            //    if (!int.TryParse(scoreString, out newScore))
+            //    {
+            //        Console.WriteLine("That is not an integer");
+            //        continue;
+            //    }
+            //    else if (newScore == -1)
+            //    {
+            //        Console.WriteLine($"The average score was {(double)totalScore / (double)numScoresEntered}");
+            //        break;
+            //    }
+            //    else if (newScore < 0 || 20 < newScore)
+            //    {
+            //        Console.WriteLine("The score should be between 0 and 20, inclusive.");
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        totalScore += newScore;
+            //        numScoresEntered++;
+            //    }
+            //}
+            //LOOPS - END
+
+            // Objects stuff
+            // OBJECTS - START
+            //Human denis = new Human("Denis", "Carter", "Brown", 25);
+            //denis.IntroduceSelf();
+
+            //Human michael = new Human("Michael", "Brown", "Blue", 1);
+            //michael.IntroduceSelf();
+
+            //Human basicHuman = new Human();
+            //basicHuman.IntroduceSelf();
+
+            //Human nancy = new Human("Nancy", "Drew", "Green");
+            //nancy.IntroduceSelf();
+
+            //Human john = new Human("John", "Smith");
+            //john.IntroduceSelf();
+
+            //Human adam = new Human("Adam");
+            //adam.IntroduceSelf();
+
+            //Box box = new Box(1, 5, 2);
+            //box.Length = 3;
+
+            //Console.WriteLine("Length: " + box.Length);
+            //Console.WriteLine("Front Surface Area: " + box.FrontSurface);
+            //Console.WriteLine("Volume: " + box.Volume);
+
+            ////box.Height = -1;
+
+            //box.DisplayInfo();
+
+            //Members lucy = new Members();
+            //lucy.Introduce(true);
+
+            // Have a property that is calcuated based on other private member variables and does not correspond to one
+
+            // OBJECTS - END
+
+            // COLLECTIONS - START
+            //int[] grades = new int[5];
+            //grades[0] = 20;
+            //grades[1] = 15;
+            //grades[2] = 12;
+            //grades[3] = 9;
+            //grades[4] = 7;
+
+            //for (int i = 0; i < grades.Length; i++) {
+            //    Console.WriteLine($"grades[{i}] == {grades[i]}");
+            //}
+
+            //Console.WriteLine("Enter the new grade for student 0");
+            //grades[0] = int.Parse(Console.ReadLine());
+
+            //for (int i = 0; i < grades.Length; i++)
+            //{
+            //    Console.WriteLine($"grades[{i}] == {grades[i]}");
+            //}
+
+            //int[] grades = { 20, 13, 12, 8, 8 };
+
+            //int[] grades = new int[] { 15, 20, 3, 17, 18, 15 };
+
+            //for (int i = 0; i < grades.Length; i++)
+            //{
+            //    Console.WriteLine($"grades[{i}] == {grades[i]}");
+            //}
+
+            //int[] nums = new int[10];
+            //for (int i = 0; i < nums.Length; i++)
+            //{
+            //    nums[i] = i + 10;
+            //}
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine("nums[{0}] == {1}", i, nums[i]);
+            //}
+
+            //foreach (int num in nums)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            //string[] friends = { "John", "Sam", "Nancy", "Alice", "Bob" };
+
+            //foreach (string friend in friends)
+            //{
+            //    Console.WriteLine($"Hello {friend}!");
+            //}
+
+            //for (int i = 0; i < 10; i += 2)
+            //{
+            //    Console.WriteLine("nums[{0}] == {1}", i, nums[i]);
+            //}
+
+            //int input_number;
+
+            //while (true)
+            //{
+            //    Console.WriteLine("Please enter an integer");
+            //    if (!int.TryParse(Console.ReadLine(), out input_number)) {
+            //        Console.WriteLine("That is not an integer. Please try again");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("You entered {0}. Thank you.", input_number);
+            //        break;
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //string testString = "abc";
+            //foreach (char c in testString)
+            //{
+            //    Console.WriteLine(c);
+            //}
+
+            //Console.WriteLine("Please enter something");
+            //string input = Console.ReadLine();
+
+            //Console.WriteLine("Enter 1 if you entered a string containing only letters, 2 if you entered an integer, and 3 if you entered a boolean.");
+            //char type = (char)Console.Read();
+
+            //switch (type)
+            //{
+            //    case '1':
+            //        if (!input.All(char.IsLetter))
+            //        {
+            //            Console.WriteLine("Your input contains one or more characters that are not letters, when it should not");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Your input is a valid string.");
+            //        }
+            //        break;
+            //    case '2':
+            //        if (!int.TryParse(input, out _))
+            //        {
+            //            Console.WriteLine("Your input is not a valid integer.");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Your input is a valid integer.");
+            //        }
+            //        break;
+            //    case '3':
+            //        if (!bool.TryParse(input, out _))
+            //        {
+            //            Console.WriteLine("Your input is not a valid boolean.");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Your input is a valid boolean.");
+            //        }
+            //        break;
+            //    default:
+            //        Console.WriteLine("That is not a valid type");
+            //        break;
+            //}
+
+            //// Declare 2D array
+            //string[,] matrix;
+
+            //// Declare 3D array
+            //int[,,] threeD;
+
+            //int[,] array2D = new int[,]
+            //{
+            //    { 1, 2, 3 },
+            //    { 4, 5, 6 },
+            //    { 6, 7, 8 }
+            //};
+
+            //Console.WriteLine($"array2D[1, 1] == { array2D[1, 1]}");
+            //Console.WriteLine($"array2D[2, 1] == { array2D[2, 1]}");
+
+            //string[,,] array3D = new string[,,]
+            //{
+            //    {
+            //        { "000", "001" },
+            //        { "010", "011" }
+            //    },
+            //    {
+            //        { "100", "101" },
+            //        { "110", "111" }
+            //    }
+            //};
+
+            //Console.WriteLine($"array3D[0, 0, 0] == {array3D[0, 0, 0]}");
+            //Console.WriteLine($"array3D[1, 0, 1] == {array3D[1, 0, 1]}");
+
+            //string[,] emptyStringArray = new string[2, 3];
+
+            //emptyStringArray[0, 0] = "a";
+            //emptyStringArray[0, 1] = "b";
+            //emptyStringArray[0, 2] = "c";
+            //emptyStringArray[1, 0] = "d";
+            //emptyStringArray[1, 1] = "e";
+            //emptyStringArray[1, 2] = "f";
+
+            //for (int i = 0; i < emptyStringArray.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < emptyStringArray.GetLength(1); j++)
+            //    {
+            //        Console.Write(emptyStringArray[i, j] + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //Console.WriteLine("emptyStringArray.Rank: " + emptyStringArray.Rank);
+
+            //int[,] grid = {
+            //    { 0, 1 },
+            //    { 2, 3 }
+            //};
+            //Console.WriteLine(grid[0, 1]);
+
+            //foreach (int num in matrix)
+            //{
+            //    Console.Write(num + " ");
+            //}
+
+            //for (int i = 0; i < matrix.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < matrix.GetLength(1); j++)
+            //    {
+            //        matrix[i, j] *= 10;
+            //        Console.Write(matrix[i, j] + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //for (int i = 0; i < matrix.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < matrix.GetLength(1); j++)
+            //    {
+            //        if (matrix[i, j] % 2 == 0)
+            //        {
+            //            Console.Write(matrix[i, j] + " ");
+            //        }
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //int[,] rectangleMatrix =
+            //{
+            //    { 1, 2, 3, 4 },
+            //    { 5, 6, 7, 8 },
+            //    { 9, 1 ,2 ,3 }
+            //};
+
+            //int maximumSideLength = Math.Min(rectangleMatrix.GetLength(0), rectangleMatrix.GetLength(1));
+
+            //for (int i = 0; i < maximumSideLength; i++)
+            //{
+            //    Console.WriteLine(rectangleMatrix[i, i]);
+            //}
+            //Console.WriteLine();
+            //for (int i = 0; i < maximumSideLength; i++)
+            //{
+            //    Console.WriteLine(rectangleMatrix[i, maximumSideLength - 1 - i]);
+            //}
+
+            //for (int i = 0; i < rectangleMatrix.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < rectangleMatrix.GetLength(1); j++)
+            //    {
+            //        //if (i == j)
+            //        //{
+            //        //    Console.Write(rectangleMatrix[i, j]);
+            //        //}
+            //        if (maximumSideLength - 1 - i == j)
+            //        {
+            //            Console.Write(rectangleMatrix[i, j]);
+            //        }
+            //        else
+            //        {
+            //            Console.Write(" ");
+            //        }
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //int[][] jaggedArray = new int[3][]; // Jagged array containing 3 arrays
+            //jaggedArray[0] = new int[] { 2, 3, 5, 7, 11 };
+            //jaggedArray[1] = new int[] { 1, 2, 3 };
+            //jaggedArray[2] = new int[] { 13, 21 };
+
+            //int[][] jaggedArray2 = new int[][]
+            //{
+            //    new int[] { 2, 3, 5, 7, 11 },
+            //    new int[] { 1, 2, 3 },
+            //    new int[] { 13, 21 }
+            //};
+
+            //for (int i = 0;  i < jaggedArray.Length; i++)
+            //{
+            //    for (int j = 0; j < jaggedArray[i].Length; j++)
+            //    {
+            //        Console.Write(jaggedArray[i][j] + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //string[][] friendsAndFamily = new string[][]
+            //{
+            //    new string[] { "Michael", "Sandy" },
+            //    new string[] { "Frank", "Claudia" },
+            //    new string[] { "Andrew", "Michelle" }
+            //};
+
+            //for (int i1 = 0; i1 < friendsAndFamily.Length; i1++)
+            //{
+            //    for (int j1 = 0; j1 < friendsAndFamily[i1].Length; j1++)
+            //    {
+            //        for (int i2 = 0; i2 < friendsAndFamily.Length; i2++)
+            //        {
+            //            if (i1 == i2)
+            //            {
+            //                continue;
+            //            }
+            //            for (int j2 = 0; j2 < friendsAndFamily[i2].Length; j2++)
+            //            {
+            //                Console.WriteLine("{0}, I would like to introduce {1}",
+            //                    friendsAndFamily[i1][j1],
+            //                    friendsAndFamily[i2][j2]);
+            //            }
+            //        }
+            //    }
+            //}
+
+            //int[] studentsGrades = { 15, 13, 8, 12, 6, 16 };
+            //Console.WriteLine(GetAverage(studentsGrades));
+
+            //int[] happiness = { 10, 20, 30, 40, 50 };
+            //IncrementAllValuesBy2(happiness);
+
+            //foreach (int num in happiness)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            //ParamsMethod("The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog");
+            //ParamsMethod("ABC", 'x', 5, 3.1415, true);
+
+            //Console.WriteLine(MinManyNumbers(6, 4, 2, 8, 0, 1, 5));
+            //Console.WriteLine(MinManyNumbers(5, 1, 0, -11, 40));
+
+            //ArrayList myArrayList = new ArrayList();
+            //ArrayList myArrayList2 = new ArrayList(100); //allocated space
+
+            //myArrayList.Add(25);
+            //myArrayList.Add("Hello");
+            //myArrayList.Add(13.37);
+            //myArrayList.Add(13);
+            //myArrayList.Add(128);
+            //myArrayList.Add(25.3);
+            //myArrayList.Add(13);
+
+            //myArrayList.Remove(13); // Remove first occurance of 13. Second one remains.
+            //myArrayList.RemoveAt(0); // Remove item at index 0
+
+            //foreach (Object obj in myArrayList)
+            //{
+            //    Console.WriteLine(obj);
+            //}
+
+            //Console.WriteLine(myArrayList.Count);
+
+            //double sum = 0;
+            //foreach (object obj in myArrayList)
+            //{
+            //    if (obj is sbyte
+            //        || obj is byte
+            //        || obj is short
+            //        || obj is ushort
+            //        || obj is int
+            //        || obj is uint
+            //        || obj is long
+            //        || obj is ulong
+            //        || obj is float
+            //        || obj is double
+            //        || obj is decimal)
+            //    {
+            //        sum += Convert.ToDouble(obj);
+            //    }
+            //}
+            //Console.WriteLine(sum);
+
+            //List<int> numbers = new List<int>(); // Initialize empty list
+            //List<int> numbers = new List<int> { 1, 5, 35, 100 };
+            //numbers.Add(7);
+            //numbers.Remove(5);
+            //numbers.RemoveAt(0);
+
+            //foreach (int num in numbers)
+            //{
+            //    Console.WriteLine(num); ;
+            //}
+
+            //Console.WriteLine("numbers.Count: " + numbers.Count);
+
+            // key = ID. Value = Student object
+            //Hashtable studentsTable = new Hashtable();
+            //studentsTable.Add(1, new Student("Maria", 4.0f));
+            //studentsTable.Add(2, new Student("Jason", 2.5f));
+            //studentsTable.Add(3, new Student("Clara", 1.5f));
+            //studentsTable.Add(4, new Student("Steve", 2.0f));
+
+            //foreach (DictionaryEntry entry in studentsTable)
+            //{
+            //    int currId = (int)entry.Key;
+            //    Student storedStudent = (Student)entry.Value;
+            //    Console.WriteLine(storedStudent.Name + " has an id of " + currId + " and a GPA of " + storedStudent.Gpa + '.');
+            //}
+
+            //foreach (Object key in studentsTable.Keys)
+            //{
+            //    int currId = (int)key;
+            //    Student storedStudent = (Student)studentsTable[key];
+            //    Console.WriteLine(storedStudent.Name + " has an id of " + currId + " and a GPA of " + storedStudent.Gpa + '.');
+            //}
+
+            //Student[] students =
+            //{
+            //    new Student("Dennis", 3.33f),
+            //    new Student("Olaf",   4.0f),
+            //    new Student("Ragner", 1.0f),
+            //    new Student("Luise",  2.0f),
+            //    new Student("Levi",   0.67f)
+            //};
+
+            //int[] studentIds = { 1, 2, 6, 1, 4 };
+
+            //Hashtable studentTable = new Hashtable();
+
+            //for (int i = 0; i < students.Length; i++)
+            //{
+            //    if (studentTable.ContainsKey(studentIds[i]))
+            //    {
+            //        Console.WriteLine("Sorry, a student with the same ID already exists");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("A student with an ID of {0} was added.", studentIds[i]);
+            //        studentTable[studentIds[i]] = students[i];
+            //    }
+            //}
+
+            //foreach (object key in studentTable.Keys)
+            //{
+            //    int currId = (int)key;
+            //    Student storedStudent = (Student)studentTable[key];
+            //    Console.WriteLine(storedStudent.Name + " has an id of " + currId + " and a GPA of " + storedStudent.Gpa + '.');
+            //}
+
+            //Dictionary<int, string> myDictionary = new Dictionary<int, string>
+            //{
+            //    { 1, "one" },
+            //    { 2, "two" },
+            //    { 3, "three" }
+            //};
+
+            //Employee[] employees =
+            //{
+            //    new Employee("CEO",            "Gwyn",     95, 200),
+            //    new Employee("Manager",        "Joe",      35, 25),
+            //    new Employee("HR",             "Lora",     32, 21),
+            //    new Employee("Secretary",      "Petra",    28, 18),
+            //    new Employee("Lead Developer", "Artorias", 55, 35),
+            //    new Employee("Intern",         "Ernest",   22, 8)
+            //};
+
+            //In real life, you would use an ID as the key, not the role, as you can have many people with each role
+            //Dictionary<string, Employee> employeesDirectory = new Dictionary<string, Employee>();
+
+            //foreach (Employee employee in employees)
+            //{
+            //    employeesDirectory.Add(employee.Role, employee);
+            //}
+
+
+            //foreach (string role in employeesDirectory.Keys)
+            //{
+            //    Employee emp = employeesDirectory[role];
+            //    Console.WriteLine("{0} is the {1}. They are {2} years old and make {3} every year.",
+            //        emp.Name,
+            //        role,
+            //        emp.Age,
+            //        emp.Salary);
+            //}
+
+            //if (!employeesDirectory.ContainsKey("CTO"))
+            //{
+            //    Console.WriteLine("There is no CTO.");
+            //}
+
+            //Employee result = null;
+            //string role = "CTO";
+            //if (employeesDirectory.TryGetValue(role, out result))
+            //{
+            //    Employee emp = employeesDirectory[role];
+            //    Console.WriteLine("{0} is the {1}. They are {2} years old and make {3} every year.",
+            //        emp.Name,
+            //        role,
+            //        emp.Age,
+            //        emp.Salary);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("There is no {0}.", role);
+            //}
+
+            //for (int i = 0; i < employeesDirectory.Count; i++)
+            //{
+            //    KeyValuePair<string, Employee> pair = employeesDirectory.ElementAt(i);
+            //    Console.WriteLine("{0} is the {1}. They are {2} years old and make {3} every year.",
+            //        pair.Value.Name,
+            //        pair.Key,
+            //        pair.Value.Age,
+            //        pair.Value.Salary);
+            //}
+
+            //string roleToModify = "HR";
+            //if (employeesDirectory.ContainsKey(roleToModify))
+            //{
+            //    //employeesDirectory[roleToModify] = new Employee(roleToModify, "Elena", 26, 18);
+            //    employeesDirectory[roleToModify].Rate += 1;
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No employee exists with a role of {0}.", roleToModify);
+            //}
+
+            //Console.WriteLine();
+            //string roleToRemove = "Intern";
+            //if (employeesDirectory.Remove(roleToRemove))
+            //{
+            //    Console.WriteLine("The employee with the role of {0} was removed.", roleToRemove);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No employee exists with a role of {0}.", roleToRemove);
+            //}
+
+            //Console.WriteLine();
+            //foreach (string role in employeesDirectory.Keys)
+            //{
+            //    Employee emp = employeesDirectory[role];
+            //    Console.WriteLine("{0} is the {1}. They are {2} years old and make {3} every year.",
+            //        emp.Name,
+            //        role,
+            //        emp.Age,
+            //        emp.Salary);
+            //}
+
+            //Stack<int> stack = new Stack<int>();
+            //stack.Push(1);
+            //Console.WriteLine(stack.Peek());
+            //stack.Push(2);
+            //Console.WriteLine(stack.Peek());
+            //stack.Push(3);
+            ////Console.WriteLine(stack.Pop());
+            //Console.WriteLine(stack.Peek());
+
+            //while (stack.Count > 0)
+            //{
+            //    Console.WriteLine(stack.Pop());
+            //}
+            //Console.WriteLine(stack.Count);
+
+            //int[] numbers = { 8, 2, 3, 4, 7, 6, 2 };
+            //Stack<int> stackForReverse = new Stack<int>();
+
+            //foreach (int num in numbers)
+            //{
+            //    stackForReverse.Push(num);
+            //}
+
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    numbers[i] = stackForReverse.Pop();
+            //}
+
+            //foreach (int num in numbers)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            //Queue<int> queue = new Queue<int>();
+            //queue.Enqueue(1);
+            ////Console.WriteLine(queue.Peek());
+            //queue.Enqueue(2);
+            ////Console.WriteLine(queue.Peek());
+            //queue.Enqueue(2);
+            ////Console.WriteLine(queue.Peek()); // always 1
+
+            ////Console.WriteLine(queue.Dequeue());
+            ////Console.WriteLine(queue.Peek());
+
+            //while (queue.Count > 0)
+            //{
+            //    Console.WriteLine("Item removed: {0}.", queue.Dequeue());
+            //    Console.WriteLine("Current queue size is {0}.", queue.Count);
+            //}
+
+            //Queue<Order> ordersQueue = new Queue<Order>();
+            //Order[] ordersFromBranch1 = ReceiveOrdersFromBranch1();
+            //Order[] ordersFromBranch2 = ReceiveOrdersFromBranch2();
+
+            //foreach (Order order in ordersFromBranch1)
+            //{
+            //    ordersQueue.Enqueue(order);
+            //}
+            //foreach (Order order in ordersFromBranch2)
+            //{
+            //    ordersQueue.Enqueue(order);
+            //}
+
+            //while (ordersQueue.Count > 0)
+            //{
+            //    ordersQueue.Dequeue().ProcessOrder();
+            //}
+            // COLLECTIONS - END
+
+            // DEBUGGING - START
+            //var friends = new List<string> { "Frank", "Joe", "Michelle", "Andy", "Maria", "Carlos", "Angelina" };
+            //var partyFriends = GetPartyFriends(friends, 1);
+
+            //foreach (string friend in partyFriends)
+            //{
+            //    Console.WriteLine($"{friend} is invited to the party.");
+            //}
+            // DEBUGGING - END
+
+            // INHERITANCE - START
+            //Radio myRadio = new Radio(false, "Sony");
+
+            //Console.WriteLine(myRadio.IsOn);
+            //myRadio.SwitchOn();
+            //Console.WriteLine(myRadio.IsOn);
+            //myRadio.SwitchOff();
+            //Console.WriteLine(myRadio.IsOn);
+
+            //myRadio.ListenRadio();
+            //myRadio.SwitchOn();
+            //myRadio.ListenRadio();
+
+            //Tv myTv= new Tv(false, "Panasonic");
+
+            //Console.WriteLine(myTv.IsOn);
+            //myTv.SwitchOn();
+            //Console.WriteLine(myTv.IsOn);
+            //myTv.SwitchOff();
+            //Console.WriteLine(myTv.IsOn);
+
+            //myTv.WatchTv();
+            //myTv.SwitchOn();
+            //myTv.WatchTv();
+
+            //Dog dog = new Dog("Sif", 15);
+            //Console.WriteLine($"{dog.Name} is {dog.Age} years old.");
+            //dog.Play();
+            //dog.Eat();
+            //dog.MakeSound();
+
+            //Post post = new Post("Thanks for the birthday wishes", "Denis Panjuta", true);
+            //Console.WriteLine(post); // Use overriden ToString() method
+
+            //ImagePost imagePost = new ImagePost("Check out these new shoes", "Denis Panjuta",
+            //    @"https://static.wikia.nocookie.net/equipment/images/2/2e/Boots_3rd_Pat_1P.jpg/revision/latest?cb=20140712142637",
+            //    true);
+            //Console.WriteLine(imagePost); // Use overriden ToString() method
+
+            //VideoPost videoPost = new VideoPost("KPz 3 Pr.07HK - First Impressions! | World of Tanks",
+            //    "Skill4LTU",
+            //    @"https://www.youtube.com/watch?v=O5nDCbDBypA",
+            //    1846,
+            //    true);
+            //Console.WriteLine(videoPost);
+
+            //videoPost.Play();
+            //Console.WriteLine("Type any key to stop");
+            //Console.ReadKey();
+            //videoPost.Stop();
+
+            //EmployeeForInheritance employee = new EmployeeForInheritance("Michael Miller", 100000);
+            //employee.Work();
+            //employee.Pause();
+
+            //Trainee trainee = new Trainee("John Smith", 75000, 40, 20);
+            //trainee.Learn();
+            //trainee.Work();
+            //trainee.Pause();
+
+            //Boss boss = new Boss("Samuel Brown", 250000, "Cadillac");
+            //boss.Work();
+            //boss.Lead();
+            //boss.Pause();
+
+            //Ticket ticket = new Ticket(5);
+            //Ticket ticketSame = new Ticket(5);
+            //Ticket ticketDifferent = new Ticket(100);
+
+            //Console.WriteLine(ticket.Equals(ticket)); // Ticket implements IEquatable<Ticket>, so we can compare them with Equals()
+            //Console.WriteLine(ticket.Equals(ticketSame));
+            //Console.WriteLine(ticketSame.Equals(ticket));
+            //Console.WriteLine(ticket.Equals(ticketDifferent));
+            //Console.WriteLine(ticketDifferent.Equals(ticket));
+
+            //Chair officeChair = new Chair("Brown", "Plastic");
+            //Chair gamingChair = new Chair("Red", "Wood");
+
+            //Car damagedCar = new Car(80f, "Blue");
+
+            //// These chairs will be destroyed if the car is deestroyed
+            //damagedCar.DestroyablesNearby.Add(officeChair);
+            //damagedCar.DestroyablesNearby.Add(gamingChair);
+
+            //damagedCar.Destroy();
+
+            //DogShelter shelter = new DogShelter();
+            //foreach (DogForEnumerating dog in shelter)
+            //{
+            //    {
+            //        dog.GiveTreat(1);
+            //    }            //    if (dog.IsNaughtyDog)
+
+            //    else
+            //    {
+            //        dog.GiveTreat(2);
+            //    }
+            //}
+
+            //IEnumerable<int> collection1 = GetCollection(1);
+            //IEnumerable<int> collection2 = GetCollection(2);
+            //IEnumerable<int> collection3 = GetCollection(3);
+
+            //// These 3 collections are a list, queue, and array, respectively, but can be
+            //// treated in the same way
+            //foreach (int i in collection1)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //foreach (int i in collection2)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //foreach (int i in collection3)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            //Console.WriteLine();
+            //CollectionSum(collection1);
+            //Console.WriteLine();
+            //CollectionSum(collection2);
+            //Console.WriteLine();
+            //CollectionSum(collection3);
+            // INHERITANCE - END
+
+            // POLYMORPHISM AND TEXT FILES - START
+            //List<Car137> cars = new List<Car137>
+            //{
+            //    new Audi(200, "Blue", "A4"),
+            //    new BMW(282, "Red", "M5")
+            //};
+
+            //foreach (Car137 car in cars)
+            //{
+            //    // Repair() must be declared "virtual" in Car137 and override in the child classes to use the method from the child classes
+            //    // If "virtual" is removed, then attempting to override causes an error
+            //    // If "override" is removed, then Car137's version of Repair() is used.
+            //    car.Repair();
+            //}
+
+            //foreach (Car137 car in cars)
+            //{
+            //    // Because these are called "Car137", they use Car137's version of ShowDetails()
+            //    car.ShowDetails();
+            //}
+
+
+            //// When portrayed as a BMW or Audi, you can use their "new" ShowDetails() methods
+            //((Audi)cars[0]).ShowDetails();
+            //((BMW)cars[1]).ShowDetails();
+
+            //M3 m3 = new M3(503, "Red");
+            //m3.Repair();
+
+            //m3.SetCarIDInfo(123, "Denis Panjuta");
+            //m3.GetCarIDInfo();
+
+            //Shape3D cube = new Cube(5);
+            //cube.GetInfo();
+            //Console.WriteLine("It has a volume of {0}", cube.Volume());
+            //Console.WriteLine();
+            //Shape3D sphere = new Sphere(3);
+            //sphere.GetInfo();
+            //Console.WriteLine("It has a volume of {0}", sphere.Volume());
+
+            //Console.WriteLine();
+            //Sphere cubeAsSphere = cube as Sphere;
+            //if (cubeAsSphere == null)
+            //{
+            //    Console.WriteLine("The cube is not a sphere");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The cube is a sphere");
+            //}
+
+            //Console.WriteLine();
+            //Sphere sphereAsSphere = sphere as Sphere;
+            //if (sphereAsSphere == null)
+            //{
+            //    Console.WriteLine("The sphere is not a sphere");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The sphere is a sphere");
+            //}
+
+            //Console.WriteLine();
+            //if (cube is Sphere)
+            //{
+            //    Console.WriteLine("The cube is a sphere");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The cube is not a sphere");
+            //}
+
+            //Console.WriteLine();
+            //if (cube is Shape3D)
+            //{
+            //    Console.WriteLine("The cube is a 3D shape");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The cube is not a 3D shape");
+            //}
+
+            // Reading whole file at once
+            //string text = System.IO.File.ReadAllText(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\textFile.txt");
+            //Console.WriteLine(text);
+
+            //Console.WriteLine();
+            //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\textFile.txt");
+            //foreach (string line in lines)
+            //{
+            //    Console.WriteLine(line);
+            //}
+
+            //string[] linesToWrite =
+            //{
+            //    "first line",
+            //    "second line",
+            //    "third line"
+            //};
+
+            //System.IO.File.WriteAllLines(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\write_lines_into_this_file.txt", linesToWrite);
+
+            //string stringToWrite = "The quick brown fox jumped over the lazy dog.";
+            //System.IO.File.WriteAllText(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\write_string_into_this_file.txt", stringToWrite);
+
+            //Console.WriteLine("Please enter the name of the file you want to write into.");
+            //string filename = @"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\" + Console.ReadLine();
+            //Console.WriteLine("Please enter the line you wish to write.");
+            //string contents = Console.ReadLine();
+            //System.IO.File.WriteAllText(filename, contents);
+
+            //string[] linesToWrite2 =
+            //{
+            //    "Samoyed dog",
+            //    "Ragdoll Cat",
+            //    "Pomeranian Dog"
+            //};
+            //using (StreamWriter file = new StreamWriter(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\streamwriterText.txt"))
+            //{
+            //    foreach (string line in linesToWrite2)
+            //    {
+            //        if (line.ToLower().Contains("dog"))
+            //            {
+            //            file.WriteLine(line);
+            //        }
+            //    }
+            //}
+            //using (StreamWriter file = new StreamWriter(@"C:\Users\jbao8\source\repos\HelloWorld\HelloWorld\streamwriterText.txt", true))
+            //{
+            //    file.Write("We added a \"true\" for the append option, so these lines will be appended\n");
+            //    file.Write("to this file, instead over overwriting the existing contents.");
+            //}
+            // POLYMORPHISM AND TEXT FILES - END
+
+            // LINQ - START
+            //string[] names = { "Berta", "Claus", "Adam" };
+            //var query = from name in names
+            //            orderby name ascending
+            //            select name;
+
+            //foreach (var i in query)
+            //{
+            //    Console.WriteLine(i); // Adam, Berta, Claus
+            //}
+
+            //int[] numbers = { 75, 13, 125, 4 };
+
+            //var query = from number in numbers
+            //            where number >= 5
+            //            orderby number descending
+            //            select number;
+
+            //foreach (int i in query)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            //int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            //GetOddNumbers(numbers);
+
+            //UniversityManager universityManager = new UniversityManager();
+
+            //Console.WriteLine("Male students:");
+            //universityManager.GetMaleStudents();
+            //Console.WriteLine();
+            //Console.WriteLine("Female students:");
+            //universityManager.GetFemaleStudents();
+            //Console.WriteLine();
+            //Console.WriteLine("Students sorted by age:");
+            //universityManager.GetStudentsSortedByAge();
+            //Console.WriteLine();
+            //Console.WriteLine("All students at Beijing Tech");
+            //universityManager.GetAllStudentsAtBeijingTech();
+
+            //universityManager.GetStudentsOfSpecifiedUniversity();
+
+            //universityManager.StudentAndUniversityNameCollection();
+
+            //int[] someInt = { 30, 12, 4, 3, 12 };
+            //IEnumerable<int> sortedInts = from i in someInt
+            //                              orderby i
+            //                              select i;
+
+            //IEnumerable<int> reversedInts = from i in someInt
+            //                                orderby i descending
+            //                                select i; // same as line below
+            ////IEnumerable<int> reversedInts = sortedInts.Reverse();
+
+            //foreach (int i in sortedInts)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //foreach (int i in reversedInts)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            // Use Linq on XML
+            //string studentsXML =
+            //@"<Students>
+            //    <Student>
+            //        <Name>Toni</Name>
+            //        <Age>21</Age>
+            //        <University>Yale</University>
+            //        <Semester>6</Semester>
+            //    </Student>
+            //    <Student>
+            //        <Name>Carla</Name>
+            //        <Age>17</Age>
+            //        <University>Yale</University>
+            //        <Semester>1</Semester>
+            //    </Student>
+            //    <Student>
+            //        <Name>Leyla</Name>
+            //        <Age>19</Age>
+            //        <University>Beijing Tech</University>
+            //        <Semester>3</Semester>
+            //    </Student>
+            //    <Student>
+            //        <Name>Frank</Name>
+            //        <Age>25</Age>
+            //        <University>Beijing Tech</University>
+            //        <Semester>10</Semester>
+            //    </Student>
+            //</Students>";
+
+            //XDocument studentsXDoc = new XDocument();
+            //studentsXDoc = XDocument.Parse(studentsXML);
+
+            //var students = from student in studentsXDoc.Descendants("Student")
+            //               select new
+            //               {
+            //                   Name = student.Element("Name").Value,
+            //                   Age = student.Element("Age").Value,
+            //                   University = student.Element("University").Value,
+            //                   Semester = student.Element("Semester").Value
+            //               };
+
+            //foreach (var student in students)
+            //{
+            //    Console.WriteLine("Student {0} with an age of {1} from {2}, in semester {3}.", student.Name, student.Age, student.University, student.Semester);
+            //}
+
+            //var sortedStudents = from student in students
+            //                     orderby student.Age
+            //                     select student;
+            //Console.WriteLine();
+            //Console.WriteLine("Students sorted by age");
+            //foreach (var student in sortedStudents)
+            //{
+            //    Console.WriteLine("Student {0} with an age of {1} from {2}, in semester {3}.", student.Name, student.Age, student.University, student.Semester);
+            //}
+
+            // LINQ - END
+
+            string sentence = "The dog   the cat";
+            string[] words = sentence.Split("   ");
+            foreach (string word in words)
+            {
+                Console.WriteLine(word);
+            }
+
+            // To make sure the HelloWorld.exe found in 
+            // bin\Debug\net5
+            // .0
+            // runs correctly instead of closing immediately
+            Console.Read(); // Reads next character from input stream
+        }
+    }
+}

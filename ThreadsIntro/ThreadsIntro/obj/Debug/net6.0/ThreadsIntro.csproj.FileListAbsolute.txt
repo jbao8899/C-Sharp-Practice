@@ -1,0 +1,15 @@
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\bin\Debug\net6.0\ThreadsIntro.exe
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\bin\Debug\net6.0\ThreadsIntro.deps.json
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\bin\Debug\net6.0\ThreadsIntro.runtimeconfig.json
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\bin\Debug\net6.0\ThreadsIntro.dll
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\bin\Debug\net6.0\ThreadsIntro.pdb
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.csproj.AssemblyReference.cache
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.AssemblyInfoInputs.cache
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.AssemblyInfo.cs
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.csproj.CoreCompileInputs.cache
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.dll
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\refint\ThreadsIntro.dll
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.pdb
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ThreadsIntro.genruntimeconfig.cache
+C:\Users\jbao8\source\repos\ThreadsIntro\ThreadsIntro\obj\Debug\net6.0\ref\ThreadsIntro.dll

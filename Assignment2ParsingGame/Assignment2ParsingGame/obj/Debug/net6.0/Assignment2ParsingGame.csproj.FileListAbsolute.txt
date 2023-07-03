@@ -1,0 +1,15 @@
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\bin\Debug\net6.0\Assignment2ParsingGame.exe
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\bin\Debug\net6.0\Assignment2ParsingGame.deps.json
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\bin\Debug\net6.0\Assignment2ParsingGame.runtimeconfig.json
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\bin\Debug\net6.0\Assignment2ParsingGame.dll
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\bin\Debug\net6.0\Assignment2ParsingGame.pdb
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.csproj.AssemblyReference.cache
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.AssemblyInfoInputs.cache
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.AssemblyInfo.cs
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.csproj.CoreCompileInputs.cache
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.dll
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\refint\Assignment2ParsingGame.dll
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.pdb
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\Assignment2ParsingGame.genruntimeconfig.cache
+C:\Users\jbao8\source\repos\Assignment2ParsingGame\Assignment2ParsingGame\obj\Debug\net6.0\ref\Assignment2ParsingGame.dll

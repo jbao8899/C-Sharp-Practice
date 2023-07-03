@@ -1,0 +1,4 @@
+Samoyed dog
+Pomeranian Dog
+We added a "true" for the append option, so these lines will be appended
+to this file, instead over overwriting the existing contents.

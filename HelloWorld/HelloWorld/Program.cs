@@ -9,7 +9,19 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace HelloWorld // HelloWorld namespace is created here
-{
+{   
+    public enum ShippingMethod
+    {
+        RegularAirMail = 1,
+        RegisteredAirMail = 2,
+        Express = 3
+    }
+
+    public class NumHolder
+    {
+        public int heldNumber;
+    }
+
     // Program is a class within the HelloWorld namespace.
     // Internal means it cannot be used outside this project???
     internal class Program 
@@ -274,6 +286,16 @@ namespace HelloWorld // HelloWorld namespace is created here
                 Console.Write(number + " ");
             }
             Console.WriteLine();
+        }
+
+        public static void Increment(int number)
+        {
+            number += 1;
+        }
+
+        public static void IncrementHolder(NumHolder numHolder)
+        {
+            numHolder.heldNumber += 1;
         }
 
         // Main() is the entry point of all C# programs
@@ -1960,18 +1982,83 @@ namespace HelloWorld // HelloWorld namespace is created here
 
             // LINQ - END
 
-            string sentence = "The dog   the cat";
-            string[] words = sentence.Split("   ");
-            foreach (string word in words)
-            {
-                Console.WriteLine(word);
-            }
+            //string sentence = "The dog   the cat";
+            //string[] words = sentence.Split("   ");
+            //foreach (string word in words)
+            //{
+            //    Console.WriteLine(word);
+            //}
+
+            // ENUMS
+            //var method = ShippingMethod.Express;
+            //Console.WriteLine((int)method);
+
+            //var methodId = 2;
+            //Console.WriteLine((ShippingMethod)methodId);
+
+            //Console.WriteLine(ShippingMethod.RegularAirMail);
+
+            //ShippingMethod parsedMethod = (ShippingMethod)Enum.Parse(typeof(ShippingMethod), "RegisteredAirMail");
+            
+            //Value vs reference types
+            //int a = 10;
+            //int b = a;
+            //b++;
+            //Console.WriteLine($"a has a value of {a} and b has a value of {b}");
+
+            //int[] arrOriginal = { 0, 1, 2, 3 };
+            //int[] arrCopy = arrOriginal;
+            //arrCopy[0] = 100;
+
+            //Console.WriteLine("Original array:");
+            //for (int i = 0; i < arrOriginal.Length; i++)
+            //{
+            //    Console.Write(arrOriginal[i]);
+
+            //    if (i < arrOriginal.Length - 1)
+            //    {
+            //        Console.Write(", ");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine();
+            //    }
+            //}
+
+            //Console.WriteLine("Copied array:");
+            //for (int i = 0; i < arrCopy.Length; i++)
+            //{
+            //    Console.Write(arrCopy[i]);
+
+            //    if (i < arrCopy.Length - 1)
+            //    {
+            //        Console.Write(", ");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine();
+            //    }
+            //}
+            //// Value type (int) deep copies by default, while reference
+            //// type (array) makes a shallow copy
+            //// both arrOriginal and arrCopy contain address of the same
+            //// array, not the actual array
+
+            //int num = 1;
+            //Increment(num);
+            //Console.WriteLine(num); // unaffected
+
+            //NumHolder numHolder = new NumHolder();
+            //numHolder.heldNumber = 1;
+            //IncrementHolder(numHolder);
+            //Console.WriteLine(numHolder.heldNumber); // affected, as object is passed by reference
 
             // To make sure the HelloWorld.exe found in 
             // bin\Debug\net5
             // .0
             // runs correctly instead of closing immediately
-            Console.Read(); // Reads next character from input stream
+            //Console.Read(); // Reads next character from input stream
+
         }
     }
 }

@@ -2513,7 +2513,190 @@ namespace HelloWorld // HelloWorld namespace is created here
 
             //    Console.WriteLine(string.Join(' ', summaryWords) + "...");
             //}
-            Console.WriteLine("The quick brown fox jumped over the lazy dog.");
+
+            //StringBuilder builder = new StringBuilder();
+            //builder.Append('-', 10) // Can do this
+            //       .AppendLine()
+            //       .Append("Header")
+            //       .AppendLine()
+            //       .Append('-', 10);
+            //Console.WriteLine(builder);
+
+            //Console.WriteLine();
+            //builder.Replace('-', '+');
+            //Console.WriteLine(builder);
+
+            //Console.WriteLine();
+            //builder.Remove(0, 10);
+            //Console.WriteLine(builder);
+
+            //Console.WriteLine();
+            //builder.Insert(0, "----------");
+            //Console.WriteLine(builder);
+
+            //Console.WriteLine();
+            //StringBuilder builder2 = new StringBuilder("Hello World!");
+            //Console.WriteLine(builder2);
+
+            //Console.WriteLine(builder2[0]); // No methods for searching are in StringBuilder
+
+            // WORKING WITH TEXT EXERCISES
+            // 1.
+            //Console.WriteLine("Enter some non-negative integers separated by hyphens (do not leave a trailing hyphen)");
+            //string input = Console.ReadLine()!;
+            //string[] numStrings = input.Split('-');
+            //int[] nums = new int[numStrings.Length];
+
+            //for (int i = 0; i < numStrings.Length; i++)
+            //{
+            //    nums[i] = int.Parse(numStrings[i]);
+            //}
+
+            //bool consecutive = true;
+            //for (int i = 1; i < nums.Length; i++)
+            //{
+            //    if (nums[i] != nums[i - 1] + 1)
+            //    {
+            //        consecutive = false;
+            //        break;
+            //    }
+            //}
+
+            //if (consecutive)
+            //{
+            //    Console.WriteLine("Consecutive");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Not consecutive");
+            //}
+
+            // 2.
+            //Console.WriteLine("Enter some non-negative integers separated by hyphens (do not leave a trailing hyphen)");
+            //string? input = Console.ReadLine();
+            //if (string.IsNullOrWhiteSpace(input))
+            //{
+            //    return;
+            //}
+
+            //string[] numStrings = input.Split('-');
+            //int[] nums = new int[numStrings.Length];
+
+            //for (int i = 0; i < numStrings.Length; i++)
+            //{
+            //    nums[i] = int.Parse(numStrings[i]);
+            //}
+
+            //Array.Sort(nums);
+
+            //bool haveDuplicate = false;
+            //for (int i = 1; i < nums.Length; i++)
+            //{
+            //    if (nums[i] == nums[i - 1])
+            //    {
+            //        haveDuplicate = true;
+            //        break;
+            //    }
+            //}
+            //if (haveDuplicate)
+            //{
+            //    Console.WriteLine("There is a duplicate");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("All inputted numbers were unique");
+            //}
+
+            // 3.
+            //Console.WriteLine("Enter a time in the format HH:MM (24-hour clock)");
+            //string? input = Console.ReadLine();
+            //if (string.IsNullOrWhiteSpace(input))
+            //{
+            //    Console.WriteLine("Invalid Time");
+            //    return;
+            //}
+
+            //string[] timeComponents = input.Split(':');
+            //if (timeComponents.Length != 2) 
+            //{
+            //    Console.WriteLine("Invalid Time");
+            //    return;
+            //}
+
+            //int hour, minute;
+
+            //if (!int.TryParse(timeComponents[0], out hour))
+            //{
+            //    Console.WriteLine("Invalid Time");
+            //    return;
+            //}
+            //if (!int.TryParse(timeComponents[1], out minute))
+            //{
+            //    Console.WriteLine("Invalid Time");
+            //    return;
+            //}
+
+            //if (0 > hour || hour > 23)
+            //{
+            //    Console.WriteLine("Invalid Time");
+            //    return;
+            //}
+            //if (0 > minute || minute > 59)
+            //{
+            //    Console.WriteLine("Invalid Time");
+            //    return;
+            //}
+            //Console.WriteLine("OK");
+
+            // 4.
+            //Console.WriteLine("Enter some words separated by spaces");
+            //string? input = Console.ReadLine();
+            //if (string.IsNullOrWhiteSpace(input))
+            //{
+            //    Console.WriteLine("Invalid input");
+            //    return;
+            //}
+
+            //string[] words = input.Split(' ');
+
+            //StringBuilder output = new StringBuilder();
+
+            //for (int i = 0; i < words.Length; i++)
+            //{
+            //    if (words[i].Length  == 0)
+            //    {
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        output.Append(char.ToUpper(words[i][0]));
+            //        output.Append(words[i].Substring(1).ToLower());                
+            //    }
+            //}
+            //Console.WriteLine(output);
+
+            // 5.
+            //Console.WriteLine("Enter a word");
+            //string? word = Console.ReadLine();
+            //if (word == null)
+            //{
+            //    Console.WriteLine("Invalid input");
+            //}
+
+            //int numVowels = 0;
+            //for (int i = 0; i < word.Length; i++)
+            //{
+            //    if (word[i] == 'a' ||
+            //        word[i] == 'e' ||
+            //        word[i] == 'i' ||
+            //        word[i] == 'o' ||
+            //        word[i] == 'u')
+            //    {
+            //        numVowels++;
+            //    }
+            //}
+
+            //Console.WriteLine("There are {0} vowels in your input.", numVowels);
         }
     }
 }

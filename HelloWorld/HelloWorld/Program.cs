@@ -1989,6 +1989,8 @@ namespace HelloWorld // HelloWorld namespace is created here
             //    Console.WriteLine(word);
             //}
 
+            // Mosh Hamedani Beginner C# Lectures 
+
             // ENUMS
             //var method = ShippingMethod.Express;
             //Console.WriteLine((int)method);
@@ -1999,7 +2001,7 @@ namespace HelloWorld // HelloWorld namespace is created here
             //Console.WriteLine(ShippingMethod.RegularAirMail);
 
             //ShippingMethod parsedMethod = (ShippingMethod)Enum.Parse(typeof(ShippingMethod), "RegisteredAirMail");
-            
+
             //Value vs reference types
             //int a = 10;
             //int b = a;
@@ -2058,6 +2060,460 @@ namespace HelloWorld // HelloWorld namespace is created here
             // .0
             // runs correctly instead of closing immediately
             //Console.Read(); // Reads next character from input stream
+
+            // CONTROL FLOW EXERCISES SECTION 1
+            // 1.
+            // Console.WriteLine("Enter an integer between 1 and 10, inclusive");
+            // int num = int.Parse(Console.ReadLine());
+            // if (1 <= num && num <= 10)
+            // {
+            //     Console.WriteLine("Valid");
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Invalid");
+            // }
+
+            //2. 
+            //Console.WriteLine("Enter a number");
+            //double firstNum = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter another number");
+            //double secondNum = double.Parse(Console.ReadLine());
+
+            //Console.WriteLine("The larger number is {0}.", Math.Max(firstNum, secondNum));
+
+            //3. 
+            //Console.WriteLine("Enter the width of the image");
+            //int width = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the height of the image");
+            //int height = int.Parse(Console.ReadLine());
+
+            //if (width > height)
+            //{
+            //    Console.WriteLine("The image is in landscape format");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The image is in portrait format");
+            //}
+
+            // 4.
+            //Console.WriteLine("What is the speed limit?");
+            //int speedLimit = int.Parse(Console.ReadLine());
+
+            //int demeritPoints = 0;
+
+            //while (demeritPoints <= 12)
+            //{
+            //    Console.WriteLine("Enter your speed");
+            //    int speed = int.Parse(Console.ReadLine());
+
+            //    if (speed <= speedLimit)
+            //    {
+            //        Console.WriteLine("OK");
+            //    }
+            //    else
+            //    {
+            //        demeritPoints += (speed - speedLimit);
+            //        Console.WriteLine("You were driving too fast.");
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine("License Suspended");
+
+            // RANDOM
+            //Random random = new Random();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine(random.Next(1, 11));
+            //}
+
+            //int passwordLength = 10;
+            //Random random = new Random();
+            //char[] passwordArr = new char[passwordLength];
+            //for (int i = 0; i < passwordLength; i++)
+            //{
+            //    passwordArr[i] = (char)random.Next(97, 123); // Generate a lowercase letter
+            //}
+            //string password = new string(passwordArr);
+            //Console.WriteLine(password);
+
+            // CONTROL FLOW EXERCISES SECTION 2
+            // 1.
+            //int numDivisibleBy3 = 0;
+            //for (int i = 1; i < 100; i++)
+            //{
+            //    if (i % 3 == 0)
+            //    {
+            //        numDivisibleBy3++;
+            //    }
+            //}
+            //Console.WriteLine($"{numDivisibleBy3} integers between 1 and 100 are divisible by 3.");
+
+            // 2.
+            //double sum = 0.0;
+            //while (true)
+            //{
+            //    Console.WriteLine("Enter a number, or \"ok\" to exit");
+            //    string input = Console.ReadLine();
+
+            //    if (input.ToLower() == "ok")
+            //    {
+            //        Console.WriteLine("The sum of all the numbers you entered was {0}", sum);
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        sum += double.Parse(input);
+            //    }
+            //}
+
+            //// 3.
+            //Console.WriteLine("Enter a non-negative integer");
+            //int input = int.Parse(Console.ReadLine());
+            //int factorial = 1;
+            //int currentValue = input;
+            //while (currentValue > 1)
+            //{
+            //    factorial *= currentValue;
+            //    currentValue--;
+            //}
+            //Console.WriteLine($"{input}! = {factorial}");
+
+            // 4.
+            //Random random = new Random();
+            //int target = random.Next(1, 11);
+            //Console.WriteLine($"The target number is {target}");
+            //Console.WriteLine("Try to guess the target");
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    int guess = int.Parse(Console.ReadLine());
+            //    if (guess == target)
+            //    {
+            //        Console.WriteLine("You won");
+            //        break;
+            //    }
+            //    else 
+            //    {
+            //        if (i < 3)
+            //        {
+            //            Console.WriteLine("Try again");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("You lost");
+            //        }
+            //    }
+            //}
+
+            // 5.
+            //Console.WriteLine("Enter a series of numbers separated by commas");
+            //string input = Console.ReadLine();
+            //string[] numbersAsStrings = input.Split(',');
+            //double[] numbers = new double[numbersAsStrings.Length];
+            //for (int i = 0; i < numbersAsStrings.Length; i++)
+            //{
+            //    numbers[i] = double.Parse(numbersAsStrings[i].Trim());
+            //}
+            //double maxValue = numbers[0];
+            //for (int i = 1; i < numbers.Length; i++)
+            //{
+            //    if (numbers[i] > maxValue)
+            //    {
+            //        maxValue = numbers[i];
+            //    }
+            //}
+            //Console.WriteLine("The largest number in the series you entered was {0}", maxValue);
+
+            // ARRAYS AND LISTS
+            //int[] numbers = { 3, 7, 9, 2, 14, 6 };
+            //Console.WriteLine($"The index of 9 in numbers is {Array.IndexOf(numbers, 9)}");
+
+            //int[] numbers = { 3, 7, 9, 2, 14, 6 };
+            //Array.Clear(numbers, 0, 2);
+            //foreach (int number in numbers)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //int[] numbers = { 3, 7, 9, 2, 14, 6 };
+            //int[] buffer = new int[3];
+            //Array.Copy(numbers, buffer, 3);
+            //foreach (int number in buffer)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //int[] numbers = { 3, 7, 9, 2, 14, 6 };
+            //Array.Sort(numbers);
+            //foreach (int number in numbers)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //int[] numbers = { 3, 7, 9, 2, 14, 6 };
+            //Array.Reverse(numbers);
+            //foreach (int number in numbers)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            //List<int> numbers = new List<int>{ 1, 2, 3, 4 };
+            //numbers.Add(1);
+            //numbers.AddRange(new int[]{ 5, 6, 7});
+
+            //for (int i = 0; i < numbers.Count; i++)
+            //{
+            //    Console.WriteLine(numbers[i]);
+            //}
+
+            //Console.WriteLine($"numbers.IndexOf(1) yields {numbers.IndexOf(1)}");
+            //Console.WriteLine($"numbers.IndexOf(1, 4) yields {numbers.IndexOf(1, 4)}");
+            //Console.WriteLine($"numbers.IndexOf(1, 5) yields {numbers.IndexOf(1, 5)}");
+            //Console.WriteLine($"numbers.IndexOf(1, 2) yields {numbers.IndexOf(1, 2)}");
+            //Console.WriteLine($"numbers.IndexOf(1, 2, 2) yields {numbers.IndexOf(1, 2, 2)}");
+
+            //Console.WriteLine($"numbers.LastIndexOf(1) yields {numbers.LastIndexOf(1)}");
+
+            //Console.WriteLine("numbers.Count = {0}", numbers.Count);
+
+            //// numbers.Remove(1); // Got rid of first one
+            ////for (int i = 0; i < numbers.Count; i++)
+            ////{
+            ////    Console.WriteLine(numbers[i]);
+            ////}
+
+            //for (int i = 0; i < numbers.Count; i++)
+            //{
+            //    if (numbers[i] == 1)
+            //    {
+            //        numbers.Remove(1); // seems unsafe?
+            //    }
+            //}
+
+            //for (int i = 0; i < numbers.Count; i++)
+            //{
+            //    Console.WriteLine(numbers[i]);
+            //}
+
+            //numbers.Clear();
+            //Console.WriteLine("numbers.Count = {0}", numbers.Count);
+
+            // Arrays and Lists Exercises
+            // 1.
+            //List<string> likers = new List<string>();
+            //while (true)
+            //{
+            //    Console.WriteLine("Enter the name of someone who liked your post, or an empty line if no other people liked your post");
+            //    string newLiker = Console.ReadLine();
+
+            //    if (newLiker.Trim() == "")
+            //    {
+            //        if (likers.Count == 0)
+            //        {
+            //            Console.WriteLine("No one likes your post.");
+            //        }
+            //        else if (likers.Count == 1)
+            //        {
+            //            Console.WriteLine("{0} likes your post.", likers[0]);
+            //        }
+            //        else if (likers.Count == 2)
+            //        {
+            //            Console.WriteLine("{0} and {1} like your post.", likers[0], likers[1]);
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($"{likers[0]}, {likers[1]}, and {likers.Count - 2} others like your post.");
+            //        }
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        likers.Add(newLiker);
+            //    }
+            //}
+
+            // 2. 
+            //Console.WriteLine("Enter your name");
+            //string name = Console.ReadLine();
+            //char[] reversedNameCharArr = name.ToCharArray();
+            //Array.Reverse(reversedNameCharArr);
+            //string reversedName = new string(reversedNameCharArr);
+            //Console.WriteLine("The reversed version of your name is {0}", reversedName);
+
+            // 3. 
+            //double[] numbers = new double[5];
+            //int i = 0;
+            //while (i < 5)
+            //{
+            //    Console.WriteLine();
+            //    Console.WriteLine("Enter a number ({0} left).", 5 - i);
+            //    double newNumber = double.Parse(Console.ReadLine());
+
+            //    if (numbers.Contains(newNumber))
+            //    {
+            //        Console.WriteLine("Please enter a unique number");
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        numbers[i] = newNumber;
+            //        i++;
+            //    }
+            //}
+            //Array.Sort(numbers);
+            //foreach (double number in numbers)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            // 4.
+            //List<double> numbers = new List<double>();
+            //while (true)
+            //{
+            //    Console.WriteLine("Enter a number, or type \"Quit\" to exit");
+            //    string input = Console.ReadLine();
+            //    if (input.ToLower() == "quit")
+            //    {
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        numbers.Add(double.Parse(input));
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine("The unique numbers entered are:");
+            //IEnumerable<double> uniqueNumbers = numbers.Distinct();
+            //foreach (double number in uniqueNumbers)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            // 5.
+            //Console.WriteLine("Enter a series of at least 5 numbers separated by commas");
+            //while (true)
+            //{
+            //    string input = Console.ReadLine();
+            //    string[] numbersAsStrings = input.Split(',');
+            //    double[] numbers = new double[numbersAsStrings.Length];
+            //    for (int i = 0; i < numbersAsStrings.Length; i++)
+            //    {
+            //        numbers[i] = double.Parse(numbersAsStrings[i].Trim());
+            //    }
+
+            //    if (numbers.Length < 5)
+            //    {
+            //        Console.WriteLine("That is not enough numbers. Try again");
+            //    }
+            //    else
+            //    {
+            //        Array.Sort(numbers);
+            //        Console.WriteLine("The three smallest numbers in your input are:");
+            //        for (int i = 0; i < 3; i++)
+            //        {
+            //            Console.WriteLine(numbers[i]);
+            //        }
+            //        break;
+            //    }
+            //}
+
+            // Times and Dates
+            //DateTime dateTime = new DateTime(2015, 1, 1);
+            //DateTime now = DateTime.Now;
+            //DateTime today = DateTime.Today;
+
+            //Console.WriteLine(dateTime);
+            //Console.WriteLine(now);
+            //Console.WriteLine(today);
+
+            //Console.WriteLine($"Current hour: {now.Hour}");
+            //Console.WriteLine($"Current minute: {now.Minute}");
+
+            //DateTime tomorrow = now.AddDays(1);
+            //DateTime yesterday = now.AddDays(-1);
+
+            //Console.WriteLine(tomorrow);
+            //Console.WriteLine(yesterday);
+
+            //Console.WriteLine(now.ToLongDateString());
+            //Console.WriteLine(now.ToShortDateString());
+            //Console.WriteLine(now.ToLongTimeString());
+            //Console.WriteLine(now.ToShortTimeString());
+
+            //Console.WriteLine(now.ToString("yyyy-mm-dd HH:MM"));
+
+            //TimeSpan timeSpan1 = new TimeSpan(1, 2, 3);
+            //TimeSpan timeSpan2 = new TimeSpan(1, 0, 0);
+            //TimeSpan timeSpan3 = TimeSpan.FromHours(1);
+            //Console.WriteLine(timeSpan1);
+            //Console.WriteLine(timeSpan2);
+            //Console.WriteLine(timeSpan3);
+
+            //DateTime start = DateTime.Now;
+            //DateTime end = start.AddMinutes(2);
+            //TimeSpan duration = end - start;
+            //Console.WriteLine(duration);
+
+            //// Properties
+            //Console.WriteLine(timeSpan1.TotalMinutes); // Total time, in minutes
+            //Console.WriteLine(timeSpan1.Minutes); // minutes component
+
+            //Console.WriteLine($"Add example: {timeSpan1.Add(TimeSpan.FromMinutes(8))}"); Console.WriteLine($"Add example: {timeSpan1.Add(TimeSpan.FromMinutes(8))}");
+            //Console.WriteLine($"Subtract example: {timeSpan1.Subtract(TimeSpan.FromMinutes(2))}");
+
+            //Console.WriteLine($"Parsing timespan: {TimeSpan.Parse("01:02:03")}");
+
+            //// Text
+            //string s = "the quick brown fox jumped over the lazy dog";
+            //Console.WriteLine(s.Length);
+            //Console.WriteLine(s.LastIndexOf('o'));
+            //Console.WriteLine(s.LastIndexOf("the"));
+
+            //Console.WriteLine("the quick brown fox jumped over the lazy dog".Replace('e', 'X'));
+            //Console.WriteLine("the quick brown fox jumped over the lazy dog".Replace("the", "XXX"));
+
+            //string nullString = null;
+            //Console.WriteLine(string.IsNullOrEmpty(nullString));
+            //Console.WriteLine(string.IsNullOrEmpty(""));
+            //Console.WriteLine(string.IsNullOrEmpty(" "));
+            //Console.WriteLine(string.IsNullOrEmpty("ABC"));
+            //Console.WriteLine(string.IsNullOrWhiteSpace(nullString));
+            //Console.WriteLine(string.IsNullOrWhiteSpace(""));
+            //Console.WriteLine(string.IsNullOrWhiteSpace(" "));
+            //Console.WriteLine(string.IsNullOrWhiteSpace("ABC"));
+
+            //Console.WriteLine(1234.ToString("C")); //currency
+            //Console.WriteLine(1234.ToString("C0")); //currency with no decimals
+
+            //string input = "Birds are a group of warm-blooded vertebrates constituting the class Aves (/ˈeɪviːz/), characterised by feathers, toothless beaked jaws, the laying of hard-shelled eggs, a high metabolic rate, a four-chambered heart, and a strong yet lightweight skeleton. Birds live worldwide and range in size from the 5.5 cm (2.2 in) bee hummingbird to the 2.8 m (9 ft 2 in) common ostrich. There are about ten thousand living species, more than half of which are passerine, or \"perching\" birds. Birds have wings whose development varies according to species; the only known groups without wings are the extinct moa and elephant birds. Wings, which are modified forelimbs, gave birds the ability to fly, although further evolution has led to the loss of flight in some birds, including ratites, penguins, and diverse endemic island species. The digestive and respiratory systems of birds are also uniquely adapted for flight. Some bird species of aquatic environments, particularly seabirds and some waterbirds, have further evolved for swimming.";
+            //int maxLength = 30;
+
+            //if (input.Length < maxLength)
+            //{
+            //    Console.WriteLine(input);
+            //}
+            //else
+            //{
+            //    string[] words = input.Split(' ');
+
+            //    int numCharsSeen = 0;
+            //    List<string> summaryWords = new List<string>();
+
+            //    for (int i = 0; i < words.Length; i++)
+            //    {
+            //        numCharsSeen += words[i].Length + 1;
+            //        summaryWords.Add(words[i]);
+
+            //        if (numCharsSeen >= maxLength)
+            //        {
+            //            break;
+            //        }
+            //    }
+
+            //    Console.WriteLine(string.Join(' ', summaryWords) + "...");
+            //}
+
 
         }
     }

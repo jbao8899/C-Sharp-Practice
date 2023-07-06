@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloWorld
 {
-    internal class Order
+    public class Order
     {
         public int OrderId { get; set; }
         public int Quantity { get; set; }

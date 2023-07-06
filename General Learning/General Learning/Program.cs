@@ -298,6 +298,50 @@ namespace HelloWorld // HelloWorld namespace is created here
             numHolder.heldNumber += 1;
         }
 
+        public static List<int> GetSmallests(List<int> list, int count)
+        {
+            // should check that if count > list.Length, we don't try to get more items than there are
+            // or throw an exception
+            // also check for count <= 0, perhaps
+            // also check for list being null
+
+            //if (count <= 0 || count > list.Count)
+            //{
+            //    throw new ArgumentOutOfRangeException("count must be between 1 and the length of the list.");
+            //}
+            //if (list == null)
+            //{
+            //    throw new ArgumentNullException("list should not be null");
+            //}
+
+            // should make a copy of "list" that you remove things from
+
+            var smallests = new List<int>();
+
+            while (smallests.Count < count)
+            {
+                var min = GetSmallest(list);
+                smallests.Add(min);
+                // Removing things from inputted list is not good. Should make a copy. This changes the input
+                list.Remove(min); 
+            }
+
+            return smallests;
+        }
+
+        public static int GetSmallest(List<int> list)
+        {
+            // Assume the first number is the smallest
+            var min = list[0];
+            for (var i = 1; i < list.Count; i++)
+            {
+                if (list[i] > min) // error is here. Should be list[i] < min.
+                    min = list[i];
+            }
+            return min;
+        }
+
+
         // Main() is the entry point of all C# programs
         // static means Main() does not need an instance of the class to run
         // void means nothing is returned
@@ -2697,6 +2741,123 @@ namespace HelloWorld // HelloWorld namespace is created here
             //}
 
             //Console.WriteLine("There are {0} vowels in your input.", numVowels);
+
+            // Working with Files
+            // File class has static methods with more overhead, convenient if not doing a lot
+            // Use FileInfo with instance methods if you will interact with a file a lot
+            // Directory class provides static methods, DirectoryInfo provides instance methods
+
+
+            //if (File.Exists("../../../copyDestination.txt"))
+            //{
+            //    File.Delete("../../../copyDestination.txt");
+            //}
+            //File.Copy("../../../file to copy.txt", "../../../copyDestination.txt", true);
+
+            //Console.WriteLine(File.ReadAllText("../../../copyDestination.txt"));
+
+            //FileInfo toCopy = new FileInfo("../../../file to copy.txt");
+            //toCopy.CopyTo("../../../copyDestination.txt", true);
+            //FileInfo destination = new FileInfo("../../../file to copy.txt");
+            //// https://www.geeksforgeeks.org/file-openread-method-in-csharp-with-examples/
+            //using (FileStream fs = destination.OpenRead())
+            //{
+            //    byte[] b = new byte[1024];
+            //    UTF8Encoding temp = new UTF8Encoding(true);
+
+            //    while (fs.Read(b, 0, b.Length) > 0)
+            //    {
+            //        // Printing the file contents
+            //        Console.WriteLine(temp.GetString(b));
+            //    }
+            //}
+            //destination.Delete();
+
+            //Directory.CreateDirectory("../../../folder_1");
+
+            //Get all files in this directory and its children
+            //string[] files = Directory.GetFiles(@"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\Behavioral Training Project", "*.*", SearchOption.AllDirectories);
+            //foreach (string filename in files)
+            //{
+            //    Console.WriteLine(filename);
+            //}
+
+            // Get all jpg files in this directory and its children
+            //string[] files = Directory.GetFiles(@"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\Behavioral Training Project",
+            //                                    "*.jpg",
+            //                                    SearchOption.AllDirectories);
+            //foreach (string filename in files)
+            //{
+            //    Console.WriteLine(filename);
+            //}
+
+            // Get all directories recursively
+            //string[] subdirectories = Directory.GetDirectories(@"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\Behavioral Training Project",
+            //                                    "*.*",
+            //                                    SearchOption.AllDirectories);
+            //foreach (string directoryName in subdirectories)
+            //{
+            //    Console.WriteLine(directoryName);
+            //}
+
+            //Console.WriteLine(Directory.Exists(@"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\Behavioral Training Project"));
+            //Console.WriteLine(Directory.Exists(@"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\Behavioral Training Project\Does not exist"));
+
+            //DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning");
+            //DirectoryInfo[] subdirectories = directoryInfo.GetDirectories("*.*", SearchOption.AllDirectories);
+
+            //foreach (DirectoryInfo subdirectory in subdirectories)
+            //{
+            //    Console.WriteLine(subdirectory.FullName);
+            //}
+
+            //string pathString = @"C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning.sln";
+
+            //Console.WriteLine(Path.GetFileNameWithoutExtension(pathString));
+            //Console.WriteLine(Path.GetExtension(pathString));
+            //Console.WriteLine(Path.GetFileName(pathString));
+            //Console.WriteLine(Path.GetDirectoryName(pathString));
+
+            // WORKING WITH FILES EXERCISES
+            // 1.
+            //string text = File.ReadAllText("../../../streamwriterText.txt");
+            //string[] words = text.Split(null); // split on all whitespace (empty words at newlines? Maybe due to repeated whitespace?)
+
+            //int numWords = 0;
+            //foreach (string word in words)
+            //{
+            //    if (word.Trim().Length > 0)
+            //    {
+            //        numWords++;
+            //    }
+            //}
+
+            //Console.WriteLine($"There are {numWords} words in streamwriterText.txt");
+
+            // 2.
+            //string text = File.ReadAllText("../../../streamwriterText.txt");
+            //string[] words = text.Split(null); // split on all whitespace (treats empty lines as words?)
+
+            //string longestWord = "";
+
+            //foreach (string word in words)
+            //{
+            //    if (word.Length > longestWord.Length)
+            //    {
+            //        longestWord = word;
+            //    }
+            //}
+            //Console.WriteLine($"The longest word in the file is \"{longestWord}\" with a length of {longestWord.Length} characters.");
+
+            // DEBUGGING APPLICATIONS
+            var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+            var smallests = GetSmallests(numbers, 3);
+
+            foreach (var number in smallests)
+            {
+                Console.WriteLine(number);
+            }
+
         }
     }
 }

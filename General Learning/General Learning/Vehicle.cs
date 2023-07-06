@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Vehicle
+    public class Vehicle
     {
         public float Speed { get; set; }
         public string Color { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Car : Vehicle, IDestroyable
+    public class Car : Vehicle, IDestroyable
     {
         public string DestructionSound { get; set; }
 

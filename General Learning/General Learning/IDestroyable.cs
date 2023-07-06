@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    interface IDestroyable
+    public interface IDestroyable
     {
         public string DestructionSound { get; set; }
 

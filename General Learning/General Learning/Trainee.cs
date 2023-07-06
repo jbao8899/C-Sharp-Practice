@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Trainee : EmployeeForInheritance
+    public class Trainee : EmployeeForInheritance
     {
         public int WorkingHours { get; set; }
         public int SchoolHours { get; set; }

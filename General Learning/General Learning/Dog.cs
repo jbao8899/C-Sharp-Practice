@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Dog : Animal
+    public class Dog : Animal
     {
         public bool IsHappy { get; set; }
         public Dog(string setName, int setAge) : base(setName, setAge)

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Sphere : Shape3D
+    public class Sphere : Shape3D
     {
         public double Radius { get; set; }
 

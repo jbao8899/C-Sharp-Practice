@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace HelloWorld // HelloWorld namespace is created here
+namespace General_Learning // HelloWorld namespace is created here
 {   
     public enum ShippingMethod
     {
@@ -24,7 +24,7 @@ namespace HelloWorld // HelloWorld namespace is created here
 
     // Program is a class within the HelloWorld namespace.
     // Internal means it cannot be used outside this project???
-    internal class Program 
+    public class Program 
     {
         static int age; // Default values is 0
 
@@ -2850,13 +2850,49 @@ namespace HelloWorld // HelloWorld namespace is created here
             //Console.WriteLine($"The longest word in the file is \"{longestWord}\" with a length of {longestWord.Length} characters.");
 
             // DEBUGGING APPLICATIONS
-            var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
-            var smallests = GetSmallests(numbers, 3);
+            //var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+            //var smallests = GetSmallests(numbers, 3);
 
-            foreach (var number in smallests)
-            {
-                Console.WriteLine(number);
-            }
+            //foreach (var number in smallests)
+            //{
+            //    Console.WriteLine(number);
+            //}
+
+            // OBJECTS
+
+            //CustomersWithOrderList customer = new CustomersWithOrderList
+            //{
+            //    ID = 5,
+            //    Name = "John Smith" // don't need to assign everything
+            //};
+            //// Initialization list (need a default constructor for this).
+            //Console.WriteLine("Customer {0} is named {1} and has made {2} orders.",
+            //    customer.ID,
+            //    customer.Name,
+            //    customer.Orders.Count);
+
+            HTTPCookie cookie = new HTTPCookie();
+            cookie["name"] = "Mosh";
+            Console.WriteLine(cookie["name"]);
+
+            // OBJECTS EXERCISES
+
+            // 1.
+            //Stopwatch sw = new Stopwatch();
+            //sw.Start();
+            //Thread.Sleep(5000);
+            //sw.Stop();
+            //sw.Start();
+            //Thread.Sleep(2500);
+            //sw.Stop();
+
+            // 2.
+            //StackOverflowPost post = new StackOverflowPost("Ipsem Lorem", "I don't understand how JavaScript works");
+            //post.Downvote();
+            //post.Upvote();
+            //post.Downvote();
+            //post.Downvote();
+            //Console.WriteLine(post.Score);
 
         }
     }

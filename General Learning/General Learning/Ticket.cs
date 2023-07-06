@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Ticket : IEquatable<Ticket> // We can compare two tickets 
+    public class Ticket : IEquatable<Ticket> // We can compare two tickets 
     {
         public int DurationInHours { get; set; }
 

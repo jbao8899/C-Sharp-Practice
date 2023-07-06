@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class DogShelter : IEnumerable<DogForEnumerating>
+    public class DogShelter : IEnumerable<DogForEnumerating>
     {
         public List<DogForEnumerating> dogs;
 

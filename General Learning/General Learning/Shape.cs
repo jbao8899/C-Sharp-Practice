@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    abstract class Shape3D // The abstract keyword prevents instantiation
+    public abstract class Shape3D // The abstract keyword prevents instantiation
     {
         public string Name { get; set; }
 

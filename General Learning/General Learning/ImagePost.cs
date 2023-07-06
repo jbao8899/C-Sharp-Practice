@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class ImagePost : Post
+    public class ImagePost : Post
     {
         public string ImageUrl { get; set; }
 

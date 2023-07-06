@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Boss : EmployeeForInheritance
+    public class Boss : EmployeeForInheritance
     {
         public string CompanyCar { get; set; }
 

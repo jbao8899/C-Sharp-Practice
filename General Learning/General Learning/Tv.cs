@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
     //Child class
-    internal class Tv : MediaDevice
+    public class Tv : MediaDevice
     {
         public Tv(bool setIsOn, string setBrand) : base(setIsOn, setBrand)
         {

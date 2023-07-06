@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Student
+    public class Student
     {
         public string Name { get; set; }
         public float Gpa { get; set; }

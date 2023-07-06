@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class VideoPost : Post
+    public class VideoPost : Post
     {
         protected string VideoUrl { get; set; }
         protected int Length { get; set; }

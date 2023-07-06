@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Furniture
+    public class Furniture
     {
         public string Color { get; set; }
         public string Material { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Cube : Shape3D
+    public class Cube : Shape3D
     {
         public double SideLength { get; set; }
 

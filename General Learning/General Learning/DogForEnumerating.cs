@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class DogForEnumerating
+    public class DogForEnumerating
     {
         public string Name { get; set; }
         public bool IsNaughtyDog { get; set; }

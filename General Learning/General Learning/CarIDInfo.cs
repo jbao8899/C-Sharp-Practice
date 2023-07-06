@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class CarIDInfo
+    public class CarIDInfo
     {
         public int VIN { get; set; } = 0; // default value of 0
         public string owner { get; set; } = "No Owner"; // No owner as well

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Employee
+    public class Employee
     {
         public string Role { get; set; }
         public string Name { get; set; }

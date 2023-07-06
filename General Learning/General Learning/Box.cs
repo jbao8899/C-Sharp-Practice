@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
-    internal class Box
+    public class Box
     {
         private int _length; // all boxes have a length of 3 by default
         private int _height;

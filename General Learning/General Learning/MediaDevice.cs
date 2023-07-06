@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
     // Base/Parent class
-    internal class MediaDevice
+    public class MediaDevice
     {
         public bool IsOn { get; set; }
 

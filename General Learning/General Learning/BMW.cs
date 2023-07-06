@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloWorld
+namespace General_Learning
 {
     // Can also seal whole class to prevent any child classes
     // sealed class BMW : Car137

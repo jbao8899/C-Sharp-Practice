@@ -13,3 +13,18 @@ C:\Users\jbao8\source\repos\C-Sharp-Practice\General Learning\General Learning\o
 C:\Users\jbao8\source\repos\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.pdb
 C:\Users\jbao8\source\repos\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.genruntimeconfig.cache
 C:\Users\jbao8\source\repos\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\ref\General Learning.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\bin\Debug\net6.0\General Learning.exe
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\bin\Debug\net6.0\General Learning.deps.json
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\bin\Debug\net6.0\General Learning.runtimeconfig.json
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\bin\Debug\net6.0\General Learning.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\bin\Debug\net6.0\General Learning.pdb
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.csproj.AssemblyReference.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.AssemblyInfoInputs.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.AssemblyInfo.cs
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.csproj.CoreCompileInputs.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\refint\General Learning.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.pdb
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\General Learning.genruntimeconfig.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\General Learning\obj\Debug\net6.0\ref\General Learning.dll

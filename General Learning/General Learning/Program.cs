@@ -2513,6 +2513,7 @@ namespace HelloWorld // HelloWorld namespace is created here
 
             //    Console.WriteLine(string.Join(' ', summaryWords) + "...");
             //}
+            Console.WriteLine("The quick brown fox jumped over the lazy dog.");
         }
     }
 }

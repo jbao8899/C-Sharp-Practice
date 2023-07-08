@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
+using Amazon; // must go to References and add a reference to Amazon before you can do this 
+
+
 namespace General_Learning // HelloWorld namespace is created here
 {   
     public enum ShippingMethod
@@ -346,7 +349,7 @@ namespace General_Learning // HelloWorld namespace is created here
         // static means Main() does not need an instance of the class to run
         // void means nothing is returned
         // an array of strings is taken as input
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
 
             // Early stuff
@@ -2871,9 +2874,9 @@ namespace General_Learning // HelloWorld namespace is created here
             //    customer.Name,
             //    customer.Orders.Count);
 
-            HTTPCookie cookie = new HTTPCookie();
-            cookie["name"] = "Mosh";
-            Console.WriteLine(cookie["name"]);
+            //HTTPCookie cookie = new HTTPCookie();
+            //cookie["name"] = "Mosh";
+            //Console.WriteLine(cookie["name"]);
 
             // OBJECTS EXERCISES
 
@@ -2894,6 +2897,125 @@ namespace General_Learning // HelloWorld namespace is created here
             //post.Downvote();
             //Console.WriteLine(post.Score);
 
+            // ASSOCIATION BETWEEN CLASSES
+            //DBMigrator dbMigrator = new DBMigrator(new Logger());
+            //Installer installer = new Installer(new Logger());
+            //dbMigrator.Migrate();
+            //installer.Install();
+
+            //Customer customer = new Customer();
+
+            //Shape3D cube = new Cube(2.0);
+            //Shape3D sphere = new Sphere(1.5);
+
+            // Downcasting
+            //Sphere sphereAsSphere = (Sphere)sphere; // sphereAsSphere and sphere refer to the same object
+            ////Sphere cubeAsSphere = (Sphere)cube; // Cannot downcast like this, causes invalid casting error
+
+            //// safer:
+            //Sphere? cubeAsSphere = cube as Sphere;
+            //if (cubeAsSphere == null)
+            //{
+            //    Console.WriteLine("The cube cannot be cast into a sphere");
+            //}
+
+            ////safer
+            //if (cube is Sphere)
+            //{
+            //    // ...
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The cube is not a sphere");
+            //}
+
+            //Cube cube = new Cube(5);
+            //Shape3D cubeAsShape = (Shape3D)cube;
+
+            //Shape3D cubeShape = new Cube(2);
+            //List<Cube> cubeList = new List<Cube>();
+            //cubeList.Append(cubeShape);
+
+            // Boxing
+            //int x = 10;
+            //object xAsObj = (object)x; // xAsObj is stored on heap now
+
+            //// Unboxing
+            //int xAsObjAsInt = (int)x;// xAsObjAsInt is on the stack
+
+            //ArrayList arrayList = new ArrayList();
+            //arrayList.Add("Hello world"); // No boxing occurs, because strings are on the heap
+            //arrayList.Add(1); // 1 will be boxed to an object. Boxing has an overhead
+            //// Prefer List over ArrayList due to type safety and avoidance of boxing/unboxing
+
+            // INHERITANCE - SECOND PILLAR OF OOP - EXERCISE
+
+            //MyStack stack = new MyStack();
+            //stack.Push(1);
+            //stack.Push("Hello World");
+            //stack.Push(true);
+            ////stack.Push(null);
+
+            ////int numThingsInStack = stack.Size;
+            ////for (int i = 0; i < numThingsInStack; i++)
+            ////{
+            ////    Console.WriteLine(stack.Pop());
+            ////}
+
+            ////stack.Clear();
+            ////Console.WriteLine(stack.Size);
+            //////Console.WriteLine(stack.Pop());
+
+            // POLYMORPHISM - THIRD PILLAR OF OOP - EXERCISES
+
+            // 1.
+
+            //DbConnection sqlConnection = new SqlConnection("SQL connection string", DateTime.Now.AddDays(1) - DateTime.Now);
+            //DbConnection oracleConnection = new OracleConnection("SQL connection string", DateTime.Now.AddDays(1) - DateTime.Now);
+
+            //sqlConnection.OpenConnection();
+            //sqlConnection.CloseConnection();
+            //oracleConnection.OpenConnection();
+            //oracleConnection.CloseConnection();
+
+            // 2.
+            //DbCommand command = new DbCommand(new SqlConnection("sql connection string", new TimeSpan(1, 0, 0)),
+            //                                  "SELECT AVG(TestOneScore)\nFROM Grade\nJOIN Student\nON Grade.StudentID = Student.ID\nGROUP BY Class");
+            //command.Execute();
+
+            //Console.WriteLine();
+
+            //command.Connection = new OracleConnection("oracle connection string", new TimeSpan(1, 30, 0));
+            //command.Execute();
+
+            // 7/7/23 ECT Training exercise
+            Console.WriteLine("Enter the name of the baseball player");
+            string playerName = Console.ReadLine()!;
+            if (string.IsNullOrWhiteSpace(playerName))
+            {
+                throw new ArgumentNullException("The name must not be null, empty, or contain only whitespace");
+            }
+
+            Console.WriteLine("Enter the number of hits they made");
+            int hits;
+            if (!int.TryParse(Console.ReadLine(), out hits))
+            {
+                throw new ArgumentException("That is not a valid number of hits");
+            }
+
+            Console.WriteLine("Enter the number of times they were at bat");
+            int atBat;
+            if (!int.TryParse(Console.ReadLine(), out atBat))
+            {
+                throw new ArgumentException("That is not a valid number of times at bat");
+            }
+            if (atBat < hits)
+            {
+                throw new ArgumentException("The player cannot hit the ball more times than they batted");
+            }
+
+            float battingAverage = (float)hits / (float)atBat;
+            Console.WriteLine($"{playerName}'s batting average is {battingAverage.ToString("0.000")}");
         }
     }
 }

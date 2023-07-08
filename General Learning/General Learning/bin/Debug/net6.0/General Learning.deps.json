@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "General Learning/1.0.0": {
+        "dependencies": {
+          "Amazon": "1.0.0"
+        },
         "runtime": {
           "General Learning.dll": {}
+        }
+      },
+      "Amazon/1.0.0": {
+        "runtime": {
+          "Amazon.dll": {}
         }
       }
     }
   },
   "libraries": {
     "General Learning/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Amazon/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

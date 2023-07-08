@@ -1,0 +1,12 @@
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\bin\Debug\net6.0\Amazon.deps.json
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\bin\Debug\net6.0\Amazon.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\bin\Debug\net6.0\Amazon.pdb
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.csproj.AssemblyReference.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.AssemblyInfoInputs.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.AssemblyInfo.cs
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.csproj.CoreCompileInputs.cache
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\refint\Amazon.dll
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\Amazon.pdb
+C:\Users\964864\OneDrive - Cognizant HealthCare\Documents\C-Sharp-Practice\General Learning\Amazon\obj\Debug\net6.0\ref\Amazon.dll

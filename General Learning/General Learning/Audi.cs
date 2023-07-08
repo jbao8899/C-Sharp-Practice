@@ -10,6 +10,8 @@ namespace General_Learning
     {
         public string Model { get; set; }
         private string Brand { get; set; }
+
+        // Can use base() to set private fields held by parents
         public Audi(int setHorsepower, string setColor, string setModel) : base(setHorsepower, setColor)
         {
             Model = setModel;

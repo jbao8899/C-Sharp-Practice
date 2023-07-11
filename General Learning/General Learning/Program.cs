@@ -12,7 +12,7 @@ using Amazon; // must go to References and add a reference to Amazon before you 
 
 
 namespace General_Learning // HelloWorld namespace is created here
-{   
+{
     public enum ShippingMethod
     {
         RegularAirMail = 1,
@@ -27,7 +27,7 @@ namespace General_Learning // HelloWorld namespace is created here
 
     // Program is a class within the HelloWorld namespace.
     // Internal means it cannot be used outside this project???
-    public class Program 
+    public class Program
     {
         static int age; // Default values is 0
 
@@ -181,24 +181,24 @@ namespace General_Learning // HelloWorld namespace is created here
             return min;
         }
 
-        public static Order[] ReceiveOrdersFromBranch1()
+        public static OldOrder[] ReceiveOrdersFromBranch1()
         {
-            Order[] orders = new Order[]
+            OldOrder[] orders = new OldOrder[]
             {
-                new Order(1, 5),
-                new Order(2, 4),
-                new Order(6, 10)
+                new OldOrder(1, 5),
+                new OldOrder(2, 4),
+                new OldOrder(6, 10)
             };
             return orders;
         }
 
-        public static Order[] ReceiveOrdersFromBranch2()
+        public static OldOrder[] ReceiveOrdersFromBranch2()
         {
-            Order[] orders = new Order[]
+            OldOrder[] orders = new OldOrder[]
             {
-                new Order(3, 5),
-                new Order(4, 4),
-                new Order(5, 10)
+                new OldOrder(3, 5),
+                new OldOrder(4, 4),
+                new OldOrder(5, 10)
             };
             return orders;
         }
@@ -326,7 +326,7 @@ namespace General_Learning // HelloWorld namespace is created here
                 var min = GetSmallest(list);
                 smallests.Add(min);
                 // Removing things from inputted list is not good. Should make a copy. This changes the input
-                list.Remove(min); 
+                list.Remove(min);
             }
 
             return smallests;
@@ -1618,15 +1618,15 @@ namespace General_Learning // HelloWorld namespace is created here
             //    Console.WriteLine("Current queue size is {0}.", queue.Count);
             //}
 
-            //Queue<Order> ordersQueue = new Queue<Order>();
-            //Order[] ordersFromBranch1 = ReceiveOrdersFromBranch1();
-            //Order[] ordersFromBranch2 = ReceiveOrdersFromBranch2();
+            //Queue<OldOrder> ordersQueue = new Queue<OldOrder>();
+            //OldOrder[] ordersFromBranch1 = ReceiveOrdersFromBranch1();
+            //OldOrder[] ordersFromBranch2 = ReceiveOrdersFromBranch2();
 
-            //foreach (Order order in ordersFromBranch1)
+            //foreach (OldOrder order in ordersFromBranch1)
             //{
             //    ordersQueue.Enqueue(order);
             //}
-            //foreach (Order order in ordersFromBranch2)
+            //foreach (OldOrder order in ordersFromBranch2)
             //{
             //    ordersQueue.Enqueue(order);
             //}
@@ -2989,33 +2989,95 @@ namespace General_Learning // HelloWorld namespace is created here
             //command.Execute();
 
             // 7/7/23 ECT Training exercise
-            Console.WriteLine("Enter the name of the baseball player");
-            string playerName = Console.ReadLine()!;
-            if (string.IsNullOrWhiteSpace(playerName))
-            {
-                throw new ArgumentNullException("The name must not be null, empty, or contain only whitespace");
-            }
+            //Console.WriteLine("Enter the name of the baseball player");
+            //string playerName = Console.ReadLine()!;
+            //if (string.IsNullOrWhiteSpace(playerName))
+            //{
+            //    throw new ArgumentNullException("The name must not be null, empty, or contain only whitespace");
+            //}
 
-            Console.WriteLine("Enter the number of hits they made");
-            int hits;
-            if (!int.TryParse(Console.ReadLine(), out hits))
-            {
-                throw new ArgumentException("That is not a valid number of hits");
-            }
+            //Console.WriteLine("Enter the number of hits they made");
+            //int hits;
+            //if (!int.TryParse(Console.ReadLine(), out hits))
+            //{
+            //    throw new ArgumentException("That is not a valid number of hits");
+            //}
 
-            Console.WriteLine("Enter the number of times they were at bat");
-            int atBat;
-            if (!int.TryParse(Console.ReadLine(), out atBat))
-            {
-                throw new ArgumentException("That is not a valid number of times at bat");
-            }
-            if (atBat < hits)
-            {
-                throw new ArgumentException("The player cannot hit the ball more times than they batted");
-            }
+            //Console.WriteLine("Enter the number of times they were at bat");
+            //int atBat;
+            //if (!int.TryParse(Console.ReadLine(), out atBat))
+            //{
+            //    throw new ArgumentException("That is not a valid number of times at bat");
+            //}
+            //if (atBat < hits)
+            //{
+            //    throw new ArgumentException("The player cannot hit the ball more times than they batted");
+            //}
 
-            float battingAverage = (float)hits / (float)atBat;
-            Console.WriteLine($"{playerName}'s batting average is {battingAverage.ToString("0.000")}");
+            //float battingAverage = (float)hits / (float)atBat;
+            //Console.WriteLine($"{playerName}'s batting average is {battingAverage.ToString("0.000")}");
+
+            // INTERFACES
+            //OrderProcessor orderProcessor = new OrderProcessor(new ShippingCalculator());
+            //Order order = new Order { DatePlaced = DateTime.Now, TotalPrice = 100f };
+            //orderProcessor.Process(order);
+
+            //// Log to console
+            //DBMigrator35 dBMigrator = new DBMigrator35(new ConsoleLogger());
+            //dBMigrator.Migrate();
+
+            //// Log to file
+            //DBMigrator35 dBMigrator2 = new DBMigrator35(new FileLogger("../../../log_file_35.txt"));
+            //dBMigrator2.Migrate();
+
+            //VideoEncoder encoder = new VideoEncoder();
+            //encoder.RegisterNotificationChannel(new MailNotificationChannel());
+            //encoder.RegisterNotificationChannel(new SMSNotificationChannel());
+            //encoder.Encode(new Video());
+
+            //WorkflowEngine workflowEngine = new WorkflowEngine();
+            //workflowEngine.AddActivity(new UploadVideoActivity());
+            //workflowEngine.AddActivity(new EncodeVideoActivity());
+            //workflowEngine.AddActivity(new NotifyCreatorActivity());
+            //workflowEngine.AddActivity(new ChangeVideoStatusActivity());
+            //workflowEngine.Run();
+
+            // ECT Lab 3
+            //double weightPounds, heightInches;
+
+            //Console.WriteLine("Enter your weight in pounds.");
+            //if (!double.TryParse(Console.ReadLine(), out weightPounds)
+            //    || weightPounds < 0.0)
+            //{
+            //    Console.WriteLine("That is not a valid weight!");
+            //    return;
+            //}
+            //Console.WriteLine("Enter your height in inches");
+            //if (!double.TryParse(Console.ReadLine(), out heightInches)
+            //    || heightInches < 0.0)
+            //{
+            //    Console.WriteLine("That is not a valid height!");
+            //    return;
+            //}
+
+            //double bmi = (weightPounds * 703) / (heightInches * heightInches);
+
+            //if (bmi < 18.5)
+            //{
+            //    Console.WriteLine("You are underweight");
+            //}
+            //else if (bmi <= 24.9)
+            //{
+            //    Console.WriteLine("You are of a normal weight for your height");
+            //}
+            //else if (bmi <= 29.9)
+            //{
+            //    Console.WriteLine("You are overweight");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("You are obese");
+            //}
         }
     }
 }

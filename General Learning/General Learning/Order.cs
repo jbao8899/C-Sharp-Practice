@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace General_Learning
 {
     public class Order
     {
-        public int OrderId { get; set; }
-        public int Quantity { get; set; }
-        public Order(int setOrderId, int setQuantity)
-        {
-            OrderId = setOrderId;
-            Quantity = setQuantity;
-        }
+        public int Id { get; set; }
+        public DateTime DatePlaced { get; set; }
+        public Shipment Shipment { get; set; }
+        public float TotalPrice { get; set; }
 
-        public void ProcessOrder()
+        public bool IsShipped
         {
-            Console.WriteLine("Order {0} processed!", OrderId);
+            get { return Shipment != null; }
         }
     }
 }

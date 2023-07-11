@@ -10,12 +10,12 @@ namespace General_Learning
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public List<Order> Orders { get; set; } // could maybe initialize a list in the field directly
+        public List<OldOrder> Orders { get; set; } // could maybe initialize a list in the field directly
 
         public CustomersWithOrderList() {
             ID = -1;
             Name = "";
-            Orders = new List<Order>(); // Need to initialize any lists and such
+            Orders = new List<OldOrder>(); // Need to initialize any lists and such
         }
 
         public CustomersWithOrderList(int setID, string setName)

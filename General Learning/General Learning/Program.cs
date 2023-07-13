@@ -9,7 +9,10 @@ using System.Text;
 using System.Xml.Linq;
 
 using Amazon; // must go to References and add a reference to Amazon before you can do this 
-
+using System.Data.SqlTypes;
+using System.Numerics;
+using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace General_Learning // HelloWorld namespace is created here
 {
@@ -3078,6 +3081,143 @@ namespace General_Learning // HelloWorld namespace is created here
             //{
             //    Console.WriteLine("You are obese");
             //}
+
+            // ECT TRAINING LAB 4:
+            //int min = int.MaxValue;
+            //int max = int.MinValue;
+
+            //while (true)
+            //{
+            //    Console.WriteLine("Enter an integer. Enter \"Q\" to quit.");
+            //    int num;
+            //    string input = Console.ReadLine();
+
+            //    if (input == "Q")
+            //    {
+            //        if (min == int.MaxValue)
+            //        {
+            //            Console.WriteLine("No values were entered");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($"The smallest number entered was {min} and the largest was {max}");
+            //        }
+            //        break;
+            //    }
+            //    else if (!int.TryParse(input, out num))
+            //    {
+            //        Console.WriteLine("That is not an integer");
+            //    }
+            //    else
+            //    {
+            //        if (num < min)
+            //        {
+            //            min = num;
+            //        }
+            //        if (num > max)
+            //        {
+            //            max = num;
+            //        }
+            //    }
+
+            //    Console.WriteLine();
+            //}
+
+            //int numToothpicks = 23;
+            //bool isPlayerATurn = true;
+
+            //while (true)
+            //{
+            //    Console.WriteLine();
+
+            //    if (isPlayerATurn)
+            //    {
+            //        Console.WriteLine("It is player A's turn.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("It is player B's turn.");
+            //    }
+            //    Console.WriteLine($"There are {numToothpicks} remaining.");
+            //    Console.WriteLine("Enter the number of toothpicks to remove (1, 2, or 3).");
+
+            //    int numToRemove;
+            //    if (!int.TryParse(Console.ReadLine(), out numToRemove) ||
+            //        1 > numToRemove ||
+            //        3 < numToRemove ||
+            //        numToRemove > numToothpicks)
+            //    {
+            //        Console.WriteLine("That is not a valid number of toothpicks to remove");
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        numToothpicks -= numToRemove;
+            //    }
+
+            //    if (numToothpicks == 0)
+            //    {
+            //        Console.WriteLine("You lost!");
+            //        break;
+            //    }
+
+            //    if (isPlayerATurn)
+            //    {
+            //        isPlayerATurn = false;
+            //    }
+            //    else
+            //    {
+            //        isPlayerATurn = true;
+            //    }
+            //}
+
+            // ECT TRAINING LAB 6
+            // Create a program that searches through the following array
+            // of names and displays the names and phone numbers from the
+            // parallel array.
+            // Display all names that have a partial match to the text
+            // that the user typed(substring).
+            // For example, if the user types "Smith", then all four Smith
+            // family members should be displayed.
+
+            // query = "John", should "Johnson" be returned?
+
+            string[] names = { "Rick Sanchez", "Morty Smith", "Jerry Smith", "Beth Smith", "Summer Smith" };
+            string[] phoneNumbers = { "555-1334", "555-3882", "555-8211", "555-1617", "555-2803" };
+
+            if (names.Length != phoneNumbers.Length)
+            {
+                throw new ArgumentException("The array of names and the array of phone numbers must be of the same length.");
+            }
+
+            Console.WriteLine("Enter part of a name");
+
+            string? query = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                throw new ArgumentNullException("That is not a valid query!");
+            }
+
+            StringBuilder outputBuilder = new StringBuilder();
+            for (int i = 0; i < names.Length; i++)
+            {
+                if (names[i].Contains(query))
+                {
+                    outputBuilder.Append(names[i] + " " + phoneNumbers[i] + "\n");
+                }
+            }
+
+            string output = "";
+            if (outputBuilder.Length > 0)
+            {
+                output = "The people with a name matching your query are:\n";
+                output += outputBuilder.ToString();
+            }
+            else
+            {
+                output = "No one had a name in which your query appeared as a substring.";
+            }
+            Console.WriteLine(output);
         }
     }
 }

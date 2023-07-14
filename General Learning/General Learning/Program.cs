@@ -347,6 +347,12 @@ namespace General_Learning // HelloWorld namespace is created here
             return min;
         }
 
+        enum ColorForPostTest
+        {
+            red,
+            green,
+            blue
+        }
 
         // Main() is the entry point of all C# programs
         // static means Main() does not need an instance of the class to run
@@ -3182,42 +3188,97 @@ namespace General_Learning // HelloWorld namespace is created here
 
             // query = "John", should "Johnson" be returned?
 
-            string[] names = { "Rick Sanchez", "Morty Smith", "Jerry Smith", "Beth Smith", "Summer Smith" };
-            string[] phoneNumbers = { "555-1334", "555-3882", "555-8211", "555-1617", "555-2803" };
+            //string[] names = { "Rick Sanchez", "Morty Smith", "Jerry Smith", "Beth Smith", "Summer Smith" };
+            //string[] phoneNumbers = { "555-1334", "555-3882", "555-8211", "555-1617", "555-2803" };
 
-            if (names.Length != phoneNumbers.Length)
-            {
-                throw new ArgumentException("The array of names and the array of phone numbers must be of the same length.");
-            }
+            //if (names.Length != phoneNumbers.Length)
+            //{
+            //    throw new ArgumentException("The array of names and the array of phone numbers must be of the same length.");
+            //}
 
-            Console.WriteLine("Enter part of a name");
+            //Console.WriteLine("Enter part of a name");
 
-            string? query = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(query))
-            {
-                throw new ArgumentNullException("That is not a valid query!");
-            }
+            //string? query = Console.ReadLine();
+            //if (string.IsNullOrWhiteSpace(query))
+            //{
+            //    throw new ArgumentNullException("That is not a valid query!");
+            //}
 
-            StringBuilder outputBuilder = new StringBuilder();
-            for (int i = 0; i < names.Length; i++)
-            {
-                if (names[i].Contains(query))
-                {
-                    outputBuilder.Append(names[i] + " " + phoneNumbers[i] + "\n");
-                }
-            }
+            //StringBuilder outputBuilder = new StringBuilder();
+            //for (int i = 0; i < names.Length; i++)
+            //{
+            //    if (names[i].Contains(query))
+            //    {
+            //        outputBuilder.Append(names[i] + " " + phoneNumbers[i] + "\n");
+            //    }
+            //}
 
-            string output = "";
-            if (outputBuilder.Length > 0)
+            //string output = "";
+            //if (outputBuilder.Length > 0)
+            //{
+            //    output = "The people with a name matching your query are:\n";
+            //    output += outputBuilder.ToString();
+            //}
+            //else
+            //{
+            //    output = "No one had a name in which your query appeared as a substring.";
+            //}
+            //Console.WriteLine(output);
+
+            // HACKERRANK POST TEST
+
+            List<MovieForAssessment> movies = new List<MovieForAssessment>();
+            movies.Add(new MovieForAssessment("Star Wars", "Science Fiction", 5));
+            movies.Add(new MovieForAssessment("Starship Troopers", "Science Fiction", 3));
+            movies.Add(new MovieForAssessment("Django Unchained", "Western", 4));
+            movies.Add(new MovieForAssessment("Cowboys vs Aliens", "Western", 3));
+            movies.Add(new MovieForAssessment("Wonder Egg Priority", "Anime", 2));
+
+            //int highestRating = (from movie in movies
+            //                     select movie.Rating).Max();
+            //Console.WriteLine(highestRating);
+
+            //int lowestRating = (from movie in movies
+            //                    select movie.Rating).Min();
+
+            //Console.WriteLine(lowestRating);
+
+            //double averageRating = (from movie in movies
+            //                        select movie.Rating).Average();
+            //Console.WriteLine(Math.Round(averageRating, 0));
+
+            //var highestRatingForEachGenre = from movie in movies
+            //                                group movie by movie.Genre into genreGroups
+            //                                select new
+            //                                {
+            //                                    genre = genreGroups.Key,
+            //                                    genreMax = genreGroups.Max(x => x.Rating)
+            //                                };
+
+            //Dictionary<string, int> result = new Dictionary<string, int>();
+            //foreach (var genreAndMaxRating in highestRatingForEachGenre)
+            //{
+            //    result.Add(genreAndMaxRating.genre, genreAndMaxRating.genreMax);
+            //}
+
+            //Console.WriteLine(result["Science Fiction"]);
+            //Console.WriteLine(result["Western"]);
+            //Console.WriteLine(result["Anime"]);
+
+            //var c = ColorForPostTest.green;
+            //Console.WriteLine(c);
+
+            Stack st = new Stack();
+            st.Push(1);
+            st.Push(1.1);
+            st.Push('z');
+            st.Push("Hello");
+
+            foreach (var e in st)
             {
-                output = "The people with a name matching your query are:\n";
-                output += outputBuilder.ToString();
+                Console.WriteLine(e);
             }
-            else
-            {
-                output = "No one had a name in which your query appeared as a substring.";
-            }
-            Console.WriteLine(output);
+            // HACKERRANK POST TEST
         }
     }
 }

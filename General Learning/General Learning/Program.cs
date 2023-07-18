@@ -141,7 +141,12 @@ namespace General_Learning // HelloWorld namespace is created here
             { 4, 5, 6 },
             { 7, 8, 9 }
         };
-
+        
+        /// <summary>
+        /// Finds the average of an array of integers
+        /// </summary>
+        /// <param name="grades">An array of integers you want to find the average of</param>
+        /// <returns>The average of all the integers in the input array</returns>
         static double GetAverage(int[] grades)
         {
             int sum = 0;
@@ -3227,12 +3232,12 @@ namespace General_Learning // HelloWorld namespace is created here
 
             // HACKERRANK POST TEST
 
-            List<MovieForAssessment> movies = new List<MovieForAssessment>();
-            movies.Add(new MovieForAssessment("Star Wars", "Science Fiction", 5));
-            movies.Add(new MovieForAssessment("Starship Troopers", "Science Fiction", 3));
-            movies.Add(new MovieForAssessment("Django Unchained", "Western", 4));
-            movies.Add(new MovieForAssessment("Cowboys vs Aliens", "Western", 3));
-            movies.Add(new MovieForAssessment("Wonder Egg Priority", "Anime", 2));
+            //List<MovieForAssessment> movies = new List<MovieForAssessment>();
+            //movies.Add(new MovieForAssessment("Star Wars", "Science Fiction", 5));
+            //movies.Add(new MovieForAssessment("Starship Troopers", "Science Fiction", 3));
+            //movies.Add(new MovieForAssessment("Django Unchained", "Western", 4));
+            //movies.Add(new MovieForAssessment("Cowboys vs Aliens", "Western", 3));
+            //movies.Add(new MovieForAssessment("Wonder Egg Priority", "Anime", 2));
 
             //int highestRating = (from movie in movies
             //                     select movie.Rating).Max();
@@ -3268,17 +3273,139 @@ namespace General_Learning // HelloWorld namespace is created here
             //var c = ColorForPostTest.green;
             //Console.WriteLine(c);
 
-            Stack st = new Stack();
-            st.Push(1);
-            st.Push(1.1);
-            st.Push('z');
-            st.Push("Hello");
+            //Stack st = new Stack();
+            //st.Push(1);
+            //st.Push(1.1);
+            //st.Push('z');
+            //st.Push("Hello");
 
-            foreach (var e in st)
-            {
-                Console.WriteLine(e);
-            }
+            //foreach (var e in st)
+            //{
+            //    Console.WriteLine(e);
+            //}
             // HACKERRANK POST TEST
+
+            // ECT TRAINING 7/14/23
+            //Deck deck = new Deck();
+            //deck.GetCards();
+
+            //foreach (Card card in deck.cards)
+            //{
+            //    Console.WriteLine(card);
+            //}
+
+            //deck.Shuffle();
+
+            //foreach(Card card in deck.cards)
+            //{
+            //    Console.WriteLine(card);
+            //}
+
+            //Console.WriteLine("First hand:");
+            //foreach (Card card in deck.Deal(14))
+            //{
+            //    Console.WriteLine(card);
+            //}
+            //Console.WriteLine();
+
+            //Console.WriteLine("Second hand:");
+            //foreach (Card card in deck.Deal(14))
+            //{
+            //    Console.WriteLine(card);
+            //}
+            //Console.WriteLine();
+
+            //Console.WriteLine("Third hand:");
+            //foreach (Card card in deck.Deal(14))
+            //{
+            //    Console.WriteLine(card);
+            //}
+            //Console.WriteLine();
+
+            // LINQ Lecture
+
+            //string[] names = { "Bob", "Carl", "Betsy", "Melinda" };
+
+            // Query Format
+            //IEnumerable<string> results = from name in names
+            //                              where name.Contains("B")
+            //                              orderby name ascending
+            //                              select name;
+
+            // Method format
+            //IEnumerable<string> results = names.Where(n => n.Contains("B")).OrderBy(n => n);
+
+            //foreach (string name in results)
+            //{
+            //    Console.WriteLine(name);
+            //}
+
+            // Fluent API (Method chaining)
+            //List<string> names = new List<string> { "Bob", "Carl", "Betsy", "Melinda" };
+
+            //names.FindAll(n => n.Contains("B"))
+            //     .OrderBy(n => n).ToList()
+            //     .ForEach(n => Console.WriteLine(n)); // doesn't work if names is an array and not a list?
+
+            //List<StudentECTLinq> hpcClass = new List<StudentECTLinq>
+            //{
+            //    new StudentECTLinq() { StudentID = 1, Name = "Varad Mahajan",   Age = 23, IsCSMajor = true  },
+            //    new StudentECTLinq() { StudentID = 2, Name = "Elyahu Jacobi",   Age = 28, IsCSMajor = true  },
+            //    new StudentECTLinq() { StudentID = 3, Name = "John Cathcart",   Age = 22, IsCSMajor = true  },
+            //    new StudentECTLinq() { StudentID = 4, Name = "Colin Shea",      Age = 22, IsCSMajor = false },
+            //    new StudentECTLinq() { StudentID = 5, Name = "Ananya Pattnaik", Age = 23, IsCSMajor = false },
+            //    new StudentECTLinq() { StudentID = 6, Name = "Evan Randal",     Age = 23, IsCSMajor = false }
+            //};
+
+            //// Get CS majors
+            //List<StudentECTLinq> csMajorQuery = (from student in hpcClass
+            //                                     where student.IsCSMajor
+            //                                     select student).ToList();
+
+            //foreach (StudentECTLinq student in csMajorQuery)
+            //{
+            //    Console.WriteLine(student.Name);
+            //}
+
+            //List<StudentECTLinq> csMajorMethod = hpcClass.Where(student => student.IsCSMajor).ToList();
+
+            //foreach (StudentECTLinq student in csMajorMethod)
+            //{
+            //    Console.WriteLine(student.Name);
+            //}
+
+            //// only get names:
+            //List<string> csMajorNamesMethod = hpcClass.Where(student => student.IsCSMajor).Select(student => student.Name).ToList();
+            //foreach (string name in csMajorNamesMethod)
+            //{
+            //    Console.WriteLine(name);
+            //}
+
+            // Lecture non-generic
+            IList mixedList = new ArrayList();
+
+            mixedList.Add("zero");
+            mixedList.Add(1);
+            mixedList.Add("two");
+            mixedList.Add("three");
+            mixedList.Add(4);
+            mixedList.Add(new StudentECTLinq() { StudentID = 6, Name = "Evan Randal", Age = 23, IsCSMajor = false });
+
+            var intResults = from ml in mixedList.OfType<int>() select ml;
+            var stringResults = from ml in mixedList.OfType<string>() select ml;
+
+            Console.WriteLine("Integers in mixed list");
+            foreach (int num in intResults)
+            {
+                Console.WriteLine(num);
+            }
+
+            Console.WriteLine("Strings in mixed list");
+            foreach (string str in stringResults)
+            {
+                Console.WriteLine(str);
+            }
+
         }
     }
 }
